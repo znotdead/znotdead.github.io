@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Notes</title><link href="/" rel="alternate"></link><link href="/feeds/znotdead.atom.xml" rel="self"></link><id>/</id><updated>2014-11-21T00:00:00+01:00</updated><entry><title>Добрым быть на белом свете веселей</title><link href="/dobrym_byt_na_belom_svete_veselei-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:dobrym_byt_na_belom_svete_veselei-ru.html</id><summary type="html">&lt;h3&gt;Добрым быть на белом свете веселей&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Notes</title><link href="/" rel="alternate"></link><link href="/feeds/znotdead.atom.xml" rel="self"></link><id>/</id><updated>2014-12-02T00:00:00+01:00</updated><entry><title>Вареники ленивые (галушки из творога)</title><link href="/vareniki_lenivye-ru.html" rel="alternate"></link><updated>2014-12-02T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-12-02:vareniki_lenivye-ru.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Ингридиенты:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;творог (500 г)&lt;/li&gt;
+&lt;li&gt;яйца (2 шт (или 3-4 желтка))&lt;/li&gt;
+&lt;li&gt;мука (1 стакан (около 100 г + немного на подпыл))&lt;/li&gt;
+&lt;li&gt;масло сливочное (3 столовых ложки + масло для подачи)&lt;/li&gt;
+&lt;li&gt;сахар (2-3 столовых ложки)&lt;/li&gt;
+&lt;li&gt;соль&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Процесс&lt;/strong&gt;&lt;br /&gt;
+1. В творог добавить яйца, сахар, маленькую щепотку соли, растопленное сливочное масло и все хорошо перемешать.&lt;br /&gt;
+2. В творожную массу всыпать просеянную муку и перемешать. Творожное тесто не должно получиться крутым.&lt;br /&gt;
+3. Скатать жгут и порезать. (можно немного расплющить жгут.)&lt;br /&gt;
+4. Вареники варить 2-3 минуты после всплытия в подсоленной воде.&lt;br /&gt;
+5. Подавать с сливочным маслом, сахаром и сметаной.&lt;/p&gt;</summary><category term="вареники"></category></entry><entry><title>LINUX: ext4 fs</title><link href="/ext4_fs.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-24:ext4_fs.html</id><summary type="html">&lt;h3&gt;ext4 fs&lt;/h3&gt;
+&lt;p&gt;posted Apr 4, 2012, 4:18 AM by Mila Rahalevich&lt;/p&gt;
+&lt;p&gt;I was updating many millions rows in MySQL and there was a very big HDD load. I decided to decrease journaling by next options in fstab:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;UUID&lt;/span&gt;  &lt;span class="o"&gt;/&lt;/span&gt;               &lt;span class="n"&gt;ext4&lt;/span&gt;    &lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;remount&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;       &lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bute after reboot I noticed than mount shows:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;errors&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;remount&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;ro&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="n"&gt;commit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So I need to remount manually by&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;mount&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt; &lt;span class="n"&gt;remount&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Or I have changes in &lt;code&gt;/usr/lib/pm-utils/power.d/journal-commit&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nv"&gt;JOURNAL_COMMIT_TIME_AC&lt;/span&gt;&lt;span class="s-Atom"&gt;=&lt;/span&gt;&lt;span class="err"&gt;$&lt;/span&gt;&lt;span class="p"&gt;{&lt;/span&gt;&lt;span class="nv"&gt;JOURNAL_COMMIT_TIME_AC&lt;/span&gt;&lt;span class="p"&gt;:-&lt;/span&gt;&lt;span class="m"&gt;120&lt;/span&gt;&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>Добрым быть на белом свете веселей</title><link href="/dobrym_byt_na_belom_svete_veselei-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:dobrym_byt_na_belom_svete_veselei-ru.html</id><summary type="html">&lt;h3&gt;Добрым быть на белом свете веселей&lt;/h3&gt;
 &lt;p&gt;Позабудем всё, что было,&lt;br /&gt;
 Я давно сказать хотел,&lt;br /&gt;
 Что на драку глупо тратить силу,&lt;br /&gt;
@@ -21,7 +54,7 @@
 Но когда плохое забывает,&lt;br /&gt;
 То светлей становится вокруг.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;br /&gt;
-3 раза&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Не волнуйтесь понапрасну</title><link href="/ne_volnuites_ponaprasnu-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:ne_volnuites_ponaprasnu-ru.html</id><summary type="html">&lt;h3&gt;Не волнуйтесь понапрасну&lt;/h3&gt;
+3 раза&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Не волнуйтесь понапрасну</title><link href="/ne_volnuites_ponaprasnu-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:ne_volnuites_ponaprasnu-ru.html</id><summary type="html">&lt;h3&gt;Не волнуйтесь понапрасну&lt;/h3&gt;
 &lt;p&gt;﻿Бюро находок&lt;/p&gt;
 &lt;p&gt;Не волнуйтесь понапрасну&lt;br /&gt;
 Ни за что и никогда,&lt;br /&gt;
@@ -54,7 +87,7 @@
 Но друзей терять не надо,&lt;br /&gt;
 Их никто вам не вернёт.&lt;br /&gt;
 Но друзей терять не надо,&lt;br /&gt;
-Их никто вам не вернёт.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Спи, моя радость, усни</title><link href="/spi_moia_radost_usni-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:spi_moia_radost_usni-ru.html</id><summary type="html">&lt;h3&gt;Спи, моя радость, усни&lt;/h3&gt;
+Их никто вам не вернёт.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Спи, моя радость, усни</title><link href="/spi_moia_radost_usni-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:spi_moia_radost_usni-ru.html</id><summary type="html">&lt;h3&gt;Спи, моя радость, усни&lt;/h3&gt;
 &lt;p&gt;Спи, моя радость, усни,&lt;br /&gt;
 В доме погасли огни,&lt;br /&gt;
 Пчёлки затихли в саду,&lt;br /&gt;
@@ -63,7 +96,7 @@
 Месяц в окошко глядит,&lt;br /&gt;
 Глазки скорее сомкни,&lt;br /&gt;
 Спи, моя радость, усни.&lt;br /&gt;
-Усни, усни...&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Все мы делим пополам</title><link href="/vse_my_delim_popolam-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:vse_my_delim_popolam-ru.html</id><summary type="html">&lt;h3&gt;Все мы делим пополам&lt;/h3&gt;
+Усни, усни...&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Все мы делим пополам</title><link href="/vse_my_delim_popolam-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:vse_my_delim_popolam-ru.html</id><summary type="html">&lt;h3&gt;Все мы делим пополам&lt;/h3&gt;
 &lt;p&gt;﻿Как положено друзьям, всё мы делим пополам.&lt;br /&gt;
 И дождинки, и снежинки&lt;br /&gt;
 Пополам, пополам, пополам-лам-лам.&lt;br /&gt;
@@ -83,7 +116,7 @@
 Даже песню делим честно&lt;br /&gt;
 Пополам, пополам, пополам-лам-лам.&lt;br /&gt;
 Даже песню делим честно&lt;br /&gt;
-Пополам, пополам, пополам-лам-лам.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Все на свете можешь ты</title><link href="/vse_na_svete_mozhesh_ty-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:vse_na_svete_mozhesh_ty-ru.html</id><summary type="html">&lt;h3&gt;Все на свете можешь ты&lt;/h3&gt;
+Пополам, пополам, пополам-лам-лам.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Все на свете можешь ты</title><link href="/vse_na_svete_mozhesh_ty-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:vse_na_svete_mozhesh_ty-ru.html</id><summary type="html">&lt;h3&gt;Все на свете можешь ты&lt;/h3&gt;
 &lt;p&gt;Мне сегодня весело с самого утра,&lt;br /&gt;
 Напеваю песенку про свои дела.&lt;br /&gt;
 А дела прекрасные, всё мне по плечу&lt;br /&gt;
@@ -111,7 +144,7 @@
 Лай ла ла ла ла&lt;/p&gt;
 &lt;p&gt;До чего же радостно чудеса творить,&lt;br /&gt;
 Всё, что есть прекрасного, Людям подарить.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Звезды континентов</title><link href="/zvezdy_kontinentov-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:zvezdy_kontinentov-ru.html</id><summary type="html">&lt;h3&gt;Звезды континентов&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Звезды континентов</title><link href="/zvezdy_kontinentov-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:zvezdy_kontinentov-ru.html</id><summary type="html">&lt;h3&gt;Звезды континентов&lt;/h3&gt;
 &lt;p&gt;Весь мир у нас в руках,&lt;br /&gt;
 Мы звёзды континентов,&lt;br /&gt;
 Разбили в пух и прах&lt;br /&gt;
@@ -134,7 +167,7 @@
 &lt;p&gt;Едва раскроем рот,&lt;br /&gt;
 Как все от счастья плачут,&lt;br /&gt;
 И знаем наперёд -&lt;br /&gt;
-Не может быть иначе.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Похвалялся медведь</title><link href="/pokhvalialsia_medved-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:pokhvalialsia_medved-ru.html</id><summary type="html">&lt;h3&gt;Похвалялся медведь&lt;/h3&gt;
+Не может быть иначе.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Похвалялся медведь</title><link href="/pokhvalialsia_medved-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:pokhvalialsia_medved-ru.html</id><summary type="html">&lt;h3&gt;Похвалялся медведь&lt;/h3&gt;
 &lt;p&gt;﻿Тень, тень, потетень,&lt;br /&gt;
 Выше города плетень.&lt;br /&gt;
 Сели звери под плетень,&lt;br /&gt;
@@ -150,7 +183,7 @@
 &lt;p&gt;Похвалялся медведь -&lt;br /&gt;
 Могу песни я петь.&lt;br /&gt;
 Похвалялася коза -&lt;br /&gt;
-Всем повыколю глаза.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Зову мышей на бой</title><link href="/zovu_myshei_na_boi-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:zovu_myshei_na_boi-ru.html</id><summary type="html">&lt;h3&gt;Зову мышей на бой&lt;/h3&gt;
+Всем повыколю глаза.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Зову мышей на бой</title><link href="/zovu_myshei_na_boi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:zovu_myshei_na_boi-ru.html</id><summary type="html">&lt;h3&gt;Зову мышей на бой&lt;/h3&gt;
 &lt;p&gt;Зову мышей на бой,&lt;br /&gt;
 Пусть встретятся со мной&lt;br /&gt;
 Хоть миллион, хоть миллиард.&lt;br /&gt;
@@ -183,7 +216,7 @@
 Разорву на тысячу частей.&lt;br /&gt;
 Если встречу тысячу чертей,&lt;br /&gt;
 Разорву на тысячу частей.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Суп-пюре из брокколи</title><link href="/soup_pure_broccoli-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:soup_pure_broccoli-ru.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Ингредиенты&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Суп-пюре из брокколи</title><link href="/soup_pure_broccoli-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-06:soup_pure_broccoli-ru.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Ингредиенты&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Брокколи   (1 кг)&lt;/li&gt;
 &lt;li&gt;Бульон     (2 л)&lt;/li&gt;
@@ -203,7 +236,7 @@
 &lt;li&gt;Взбить суп блендером, добавить соль, перец, а также горячие сливки.&lt;/li&gt;
 &lt;li&gt;Довести до кипения.&lt;/li&gt;
 &lt;li&gt;Украсить петрушкой, сливками.&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="суп"></category><category term="суп-пюре"></category></entry><entry><title>Здравствуй, детство!</title><link href="/zdravstvui_detstvo-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:zdravstvui_detstvo-ru.html</id><summary type="html">&lt;h3&gt;Здравствуй, детство!&lt;/h3&gt;
+&lt;/ol&gt;</summary><category term="суп"></category><category term="суп-пюре"></category></entry><entry><title>Здравствуй, детство!</title><link href="/zdravstvui_detstvo-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:zdravstvui_detstvo-ru.html</id><summary type="html">&lt;h3&gt;Здравствуй, детство!&lt;/h3&gt;
 &lt;p&gt;м/ф "Чучело-мяучело"&lt;/p&gt;
 &lt;p&gt;Утро начинается, начинается.&lt;br /&gt;
 Город улыбается, улыбается.&lt;br /&gt;
@@ -249,7 +282,7 @@
 Вместе с нами&lt;br /&gt;
 Выходи играть!&lt;br /&gt;
 Здравствуй, детство!&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка про жирафа</title><link href="/pesenka_pro_zhirafa-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_pro_zhirafa-ru.html</id><summary type="html">&lt;h3&gt;Песенка про жирафа&lt;/h3&gt;
+&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка про жирафа</title><link href="/pesenka_pro_zhirafa-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_pro_zhirafa-ru.html</id><summary type="html">&lt;h3&gt;Песенка про жирафа&lt;/h3&gt;
 &lt;p&gt;Есть на свете место беззаботное,&lt;br /&gt;
 Где гуляет важно, словно граф,&lt;br /&gt;
 Очень длинношеее животное&lt;br /&gt;
@@ -268,7 +301,7 @@
 &lt;p&gt;Там зимой и летом вечно зелено,&lt;br /&gt;
 И стоим мы, головы задрав,&lt;br /&gt;
 До жирафа все доходит медленно.&lt;br /&gt;
-Все равно нам нравится жираф.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Песенка Зайца и Волка на карнавале</title><link href="/pesenka_zaitsa_i_volka_na_karnavale-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_zaitsa_i_volka_na_karnavale-ru.html</id><summary type="html">&lt;h3&gt;Песенка Зайца и Волка на карнавале&lt;/h3&gt;
+Все равно нам нравится жираф.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Песенка Зайца и Волка на карнавале</title><link href="/pesenka_zaitsa_i_volka_na_karnavale-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_zaitsa_i_volka_na_karnavale-ru.html</id><summary type="html">&lt;h3&gt;Песенка Зайца и Волка на карнавале&lt;/h3&gt;
 &lt;p&gt;Заяц (Дед Мороз):&lt;br /&gt;
 Расскажи, Снегурочка, где была?&lt;br /&gt;
 Расскажи-ка, милая, как дела?&lt;br /&gt;
@@ -284,7 +317,7 @@
 И тебе достанется от меня!&lt;br /&gt;
 Волк (Снегурочка):&lt;br /&gt;
 Наконец, сбываются все мечты:&lt;br /&gt;
-Лучший мой подарочек - это ты!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Самая счастливая</title><link href="/samaia_schastlivaia-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:samaia_schastlivaia-ru.html</id><summary type="html">&lt;h3&gt;Самая счастливая&lt;/h3&gt;
+Лучший мой подарочек - это ты!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Самая счастливая</title><link href="/samaia_schastlivaia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:samaia_schastlivaia-ru.html</id><summary type="html">&lt;h3&gt;Самая счастливая&lt;/h3&gt;
 &lt;p&gt;Выглянуло солнышко, блещет на лугу.&lt;br /&gt;
 Я навстречу солнышку по траве бегу.&lt;br /&gt;
 И ромашки белые рву я на лету.&lt;br /&gt;
@@ -296,7 +329,7 @@
 &lt;p&gt;Собрала в ладошки я чистую росу,&lt;br /&gt;
 Радугу и солнышко я в руках несу!&lt;br /&gt;
 И цветы над речкою, песню и зарю -&lt;br /&gt;
-Все, что утром встречу я, маме подарю!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Учат в школе</title><link href="/uchat_v_shkole-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:uchat_v_shkole-ru.html</id><summary type="html">&lt;h3&gt;Учат в школе&lt;/h3&gt;
+Все, что утром встречу я, маме подарю!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Учат в школе</title><link href="/uchat_v_shkole-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:uchat_v_shkole-ru.html</id><summary type="html">&lt;h3&gt;Учат в школе&lt;/h3&gt;
 &lt;p&gt;Буквы разные писать тонким перышком в тетрадь&lt;br /&gt;
 Учат в школе, учат в школе, учат в школе.&lt;br /&gt;
 Вычитать и умножать, малышей не обижать&lt;br /&gt;
@@ -312,7 +345,7 @@
 &lt;p&gt;Про глагол и про тире, и про дождик на дворе&lt;br /&gt;
 Учат в школе, учат в школе, учат в школе.&lt;br /&gt;
 Крепко-накрепко дружить, с детства дружбой дорожить&lt;br /&gt;
-Учат в школе, учат в школе, учат в школе.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Добрый жук</title><link href="/dobryi_zhuk-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dobryi_zhuk-ru.html</id><summary type="html">&lt;h3&gt;Добрый жук&lt;/h3&gt;
+Учат в школе, учат в школе, учат в школе.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Добрый жук</title><link href="/dobryi_zhuk-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dobryi_zhuk-ru.html</id><summary type="html">&lt;h3&gt;Добрый жук&lt;/h3&gt;
 &lt;p&gt;Встаньте, дети, встаньте в круг,&lt;br /&gt;
 Встаньте в круг, встаньте в круг!&lt;br /&gt;
 Жил на свете добрый жук,&lt;br /&gt;
@@ -332,7 +365,7 @@
 Старика, добряка -&lt;br /&gt;
 Очень уж душа легка&lt;br /&gt;
 У него, весельчака.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Волшебник-недоучка</title><link href="/volshebnik_nedouchka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:volshebnik_nedouchka-ru.html</id><summary type="html">&lt;h3&gt;Волшебник-недоучка&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Волшебник-недоучка</title><link href="/volshebnik_nedouchka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:volshebnik_nedouchka-ru.html</id><summary type="html">&lt;h3&gt;Волшебник-недоучка&lt;/h3&gt;
 &lt;p&gt;Вычислить путь звезды&lt;br /&gt;
 И развести сады,&lt;br /&gt;
 И укротить тайфун -&lt;br /&gt;
@@ -365,7 +398,7 @@
 Ночью мне снится сон, -&lt;br /&gt;
 Плачут коза и слон,&lt;br /&gt;
 Плачут и говорят:&lt;br /&gt;
-"Что с нами сделал ты?!"&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Дождь пойдет по улице.</title><link href="/dozhd_poidet_po_ulitse-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dozhd_poidet_po_ulitse-ru.html</id><summary type="html">&lt;h3&gt;Дождь пойдет по улице.&lt;/h3&gt;
+"Что с нами сделал ты?!"&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Дождь пойдет по улице.</title><link href="/dozhd_poidet_po_ulitse-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dozhd_poidet_po_ulitse-ru.html</id><summary type="html">&lt;h3&gt;Дождь пойдет по улице.&lt;/h3&gt;
 &lt;p&gt;В небе туча хмурится, хмурится, хмурится,&lt;br /&gt;
 Скоро грянет гром, скоро грянет гром.&lt;br /&gt;
 Дождь пойдет по улице, улице, улице&lt;br /&gt;
@@ -389,7 +422,7 @@
 &lt;p&gt;У кота под лесенкой, лесенкой, лесенкой&lt;br /&gt;
 Загорится свет, загорится свет.&lt;br /&gt;
 Жаль у нашей песенки, песенки, песенки&lt;br /&gt;
-Продолженья нет, продолженья нет.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка Водяного</title><link href="/pesenka_vodianogo-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_vodianogo-ru.html</id><summary type="html">&lt;h3&gt;Песенка Водяного&lt;/h3&gt;
+Продолженья нет, продолженья нет.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка Водяного</title><link href="/pesenka_vodianogo-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_vodianogo-ru.html</id><summary type="html">&lt;h3&gt;Песенка Водяного&lt;/h3&gt;
 &lt;p&gt;Я - Водяной, я - Водяной,&lt;br /&gt;
 Поговорил бы кто со мной.&lt;br /&gt;
 А то мои подружки -&lt;br /&gt;
@@ -406,7 +439,7 @@
 &lt;p&gt;Я - Водяной, я -Водяной!&lt;br /&gt;
 Никто не водится со мной.&lt;br /&gt;
 Внутри меня - водица,&lt;br /&gt;
-Ну что со мной водиться?&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Вместе весело шагать</title><link href="/vmeste_veselo_shagat-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:vmeste_veselo_shagat-ru.html</id><summary type="html">&lt;h3&gt;Вместе весело шагать&lt;/h3&gt;
+Ну что со мной водиться?&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Вместе весело шагать</title><link href="/vmeste_veselo_shagat-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:vmeste_veselo_shagat-ru.html</id><summary type="html">&lt;h3&gt;Вместе весело шагать&lt;/h3&gt;
 &lt;p&gt;Вместе весело шагать по просторам,&lt;br /&gt;
 По просторам,по просторам!&lt;br /&gt;
 И конечно припевать лучше хором,&lt;br /&gt;
@@ -422,7 +455,7 @@
 &lt;p&gt;Нам счастливую тропинку выбрать надобно.&lt;br /&gt;
 Раз дождинка, два дождинка - будет радуга!&lt;br /&gt;
 Раз дощечка, два дощечка - будет лесенка!&lt;br /&gt;
-Раз словечко, два словечко - будет песенка!&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>В каждом маленьком ребенке</title><link href="/v_kazhdom_malenkom_rebenke-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:v_kazhdom_malenkom_rebenke-ru.html</id><summary type="html">&lt;h3&gt;В каждом маленьком ребенке&lt;/h3&gt;
+Раз словечко, два словечко - будет песенка!&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>В каждом маленьком ребенке</title><link href="/v_kazhdom_malenkom_rebenke-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:v_kazhdom_malenkom_rebenke-ru.html</id><summary type="html">&lt;h3&gt;В каждом маленьком ребенке&lt;/h3&gt;
 &lt;p&gt;м/ф "Обезьянки, вперед"&lt;/p&gt;
 &lt;p&gt;В каждом маленьком ребенке&lt;br /&gt;
 И мальчишке и девчонке&lt;br /&gt;
@@ -439,7 +472,7 @@
 Он всегда куда-то мчится&lt;br /&gt;
 Он ужасно огорчиться,&lt;br /&gt;
 Если что нибудь на свете&lt;br /&gt;
-Вдруг случится без него!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка Винни-Пуха</title><link href="/pesenka_vinni_pukha-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_vinni_pukha-ru.html</id><summary type="html">&lt;h3&gt;Песенка Винни-Пуха&lt;/h3&gt;
+Вдруг случится без него!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка Винни-Пуха</title><link href="/pesenka_vinni_pukha-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_vinni_pukha-ru.html</id><summary type="html">&lt;h3&gt;Песенка Винни-Пуха&lt;/h3&gt;
 &lt;p&gt;Если я чешу в затылке, не беда,&lt;br /&gt;
 В голове моей опилки, да-да-да,&lt;br /&gt;
 Но хотя там и опилки,&lt;br /&gt;
@@ -465,7 +498,7 @@
 Он никуда не денется,&lt;br /&gt;
 И потому горшок пустой,&lt;br /&gt;
 И потому горшок пустой,&lt;br /&gt;
-Гораздо выше ценится!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Улыбка</title><link href="/ulybka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:ulybka-ru.html</id><summary type="html">&lt;h3&gt;Улыбка&lt;/h3&gt;
+Гораздо выше ценится!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Улыбка</title><link href="/ulybka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:ulybka-ru.html</id><summary type="html">&lt;h3&gt;Улыбка&lt;/h3&gt;
 &lt;p&gt;От улыбки хмурый день светлей,&lt;br /&gt;
 От улыбки в небе радуга проснется...&lt;br /&gt;
 Поделись улыбкою своей,&lt;br /&gt;
@@ -486,7 +519,7 @@
 &lt;p&gt;От улыбки станет всем теплей -&lt;br /&gt;
 И слону и даже маленькой улитке...&lt;br /&gt;
 Так пускай повсюду на земле,&lt;br /&gt;
-Будто лампочки, включаются улыбки!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Гениальный сыщик</title><link href="/genialnyi_syshchik-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:genialnyi_syshchik-ru.html</id><summary type="html">&lt;h3&gt;Гениальный сыщик&lt;/h3&gt;
+Будто лампочки, включаются улыбки!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Гениальный сыщик</title><link href="/genialnyi_syshchik-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:genialnyi_syshchik-ru.html</id><summary type="html">&lt;h3&gt;Гениальный сыщик&lt;/h3&gt;
 &lt;p&gt;Я - гениальный сыщик!&lt;br /&gt;
 Мне помощь не нужна!&lt;br /&gt;
 Найду я даже прыщик&lt;br /&gt;
@@ -510,7 +543,7 @@
 Как мышь, крадусь во мраке.&lt;br /&gt;
 Плыву как камбала.&lt;br /&gt;
 А нюх, как у собаки,&lt;br /&gt;
-А глаз, как у орла.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Первые шаги</title><link href="/pervye_shagi-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pervye_shagi-ru.html</id><summary type="html">&lt;h3&gt;Первые шаги&lt;/h3&gt;
+А глаз, как у орла.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Первые шаги</title><link href="/pervye_shagi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pervye_shagi-ru.html</id><summary type="html">&lt;h3&gt;Первые шаги&lt;/h3&gt;
 &lt;p&gt;Топ. Топ. Топает малыш.&lt;br /&gt;
 С мамой по дорожке – милый стриж!&lt;br /&gt;
 Маленькие ножки не спешат,&lt;br /&gt;
@@ -537,7 +570,7 @@
 &lt;p&gt;Топ. Топ. Скоро подрастешь.&lt;br /&gt;
 И своей дорогою пойдешь –&lt;br /&gt;
 Будет нелегко, малыш, подчас,&lt;br /&gt;
-Начинать все в жизни первый раз…&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Собака бывает кусачей</title><link href="/sobaka_byvaet_kusachei-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:sobaka_byvaet_kusachei-ru.html</id><summary type="html">&lt;h3&gt;Собака бывает кусачей&lt;/h3&gt;
+Начинать все в жизни первый раз…&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Собака бывает кусачей</title><link href="/sobaka_byvaet_kusachei-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:sobaka_byvaet_kusachei-ru.html</id><summary type="html">&lt;h3&gt;Собака бывает кусачей&lt;/h3&gt;
 &lt;p&gt;Собака несчастная очень опасна,&lt;br /&gt;
 Ведь ей не везет в этой жизни ужасно,&lt;br /&gt;
 Ужасно, как ей не везет!&lt;br /&gt;
@@ -570,7 +603,7 @@ Hикто не съедает гpажданку лошадку&lt;br /&gt;
 Когда у собаки есть будка и миска,&lt;br /&gt;
 Ошейник, луна, а в желудке сосиска.&lt;br /&gt;
 И каждому ясно, что эта собака&lt;br /&gt;
-Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Спят усталые игрушки</title><link href="/spiat_ustalye_igrushki-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:spiat_ustalye_igrushki-ru.html</id><summary type="html">&lt;h3&gt;Спят усталые игрушки&lt;/h3&gt;
+Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Спят усталые игрушки</title><link href="/spiat_ustalye_igrushki-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:spiat_ustalye_igrushki-ru.html</id><summary type="html">&lt;h3&gt;Спят усталые игрушки&lt;/h3&gt;
 &lt;p&gt;Спят усталые игрушки, книжки спят,&lt;br /&gt;
 Одеяла и подушки ждут ребят.&lt;br /&gt;
 Даже сказка спать ложится,&lt;br /&gt;
@@ -590,7 +623,7 @@ Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские
 Баю-баю, завтра будет день опять.&lt;br /&gt;
 За день мы устали очень,&lt;br /&gt;
 Скажем всем: "Спокойной ночи".&lt;br /&gt;
-Глазки закрывай, баю-бай.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Рыжий, рыжий, конопатый</title><link href="/ryzhii_ryzhii_konopatyi-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:ryzhii_ryzhii_konopatyi-ru.html</id><summary type="html">&lt;h3&gt;Рыжий, рыжий, конопатый&lt;/h3&gt;
+Глазки закрывай, баю-бай.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Рыжий, рыжий, конопатый</title><link href="/ryzhii_ryzhii_konopatyi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:ryzhii_ryzhii_konopatyi-ru.html</id><summary type="html">&lt;h3&gt;Рыжий, рыжий, конопатый&lt;/h3&gt;
 &lt;p&gt;Если мальчик конопат,&lt;br /&gt;
 Разве мальчик виноват,&lt;br /&gt;
 Что на свет родился конопатым?&lt;br /&gt;
@@ -622,7 +655,7 @@ Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские
 "Рыжий папа, рыжий дед,&lt;br /&gt;
 Рыжим стал весь белый свет!&lt;br /&gt;
 А если каждый конопат,&lt;br /&gt;
-Где на всех набрать лопат?&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>С чего начинается Родина?</title><link href="/s_chego_nachinaetsia_rodina-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:s_chego_nachinaetsia_rodina-ru.html</id><summary type="html">&lt;h3&gt;С чего начинается Родина?&lt;/h3&gt;
+Где на всех набрать лопат?&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>С чего начинается Родина?</title><link href="/s_chego_nachinaetsia_rodina-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:s_chego_nachinaetsia_rodina-ru.html</id><summary type="html">&lt;h3&gt;С чего начинается Родина?&lt;/h3&gt;
 &lt;p&gt;С чего начинается Родина? &lt;br /&gt;
 С картинки в твоём букваре, &lt;br /&gt;
 С хороших и верных товарищей, &lt;br /&gt;
@@ -647,7 +680,7 @@ Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские
 Со стука вагонных колес. &lt;br /&gt;
 И с клятвы, которую в юности &lt;br /&gt;
 Ты ей в своем сердце принёс.&lt;/p&gt;
-&lt;p&gt;С чего начинается Родина?..&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>День рождения</title><link href="/den_rozhdeniia-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:den_rozhdeniia-ru.html</id><summary type="html">&lt;h3&gt;День рождения&lt;/h3&gt;
+&lt;p&gt;С чего начинается Родина?..&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>День рождения</title><link href="/den_rozhdeniia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:den_rozhdeniia-ru.html</id><summary type="html">&lt;h3&gt;День рождения&lt;/h3&gt;
 &lt;p&gt;Пусть бегут неуклюже &lt;br /&gt;
 Пешеходы по лужам,&lt;br /&gt;
 А вода по асфальту рекой.&lt;br /&gt;
@@ -666,7 +699,7 @@ Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские
 И бесплатно покажет кино.&lt;br /&gt;
 С днем рождения поздравит &lt;br /&gt;
 И конечно, подарит&lt;br /&gt;
-Мне в подарок пятьсот "эскимо".&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Песня переодетых Бременских музыкантов</title><link href="/pesnia_pereodetykh_bremenskikh_muzykantov-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesnia_pereodetykh_bremenskikh_muzykantov-ru.html</id><summary type="html">&lt;h3&gt;Песня переодетых Бременских музыкантов&lt;/h3&gt;
+Мне в подарок пятьсот "эскимо".&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Песня переодетых Бременских музыкантов</title><link href="/pesnia_pereodetykh_bremenskikh_muzykantov-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesnia_pereodetykh_bremenskikh_muzykantov-ru.html</id><summary type="html">&lt;h3&gt;Песня переодетых Бременских музыкантов&lt;/h3&gt;
 &lt;p&gt;А, как известно, мы народ горячий,&lt;br /&gt;
 Ах, и не выносим нежностей телячих,&lt;br /&gt;
 Но любим мы зато телячьи души&lt;br /&gt;
@@ -689,7 +722,7 @@ Hе кpуглая сиpота!&lt;/p&gt;</summary><category term="детские
 К нам не подходи, &lt;br /&gt;
 К нам не подходи,&lt;br /&gt;
 К нам не подходи, &lt;br /&gt;
-А то зарежем.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Row, row, row your boat</title><link href="/row_row_row_your_boat.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:row_row_row_your_boat.html</id><summary type="html">&lt;h3&gt;Row, row, row your boat&lt;/h3&gt;
+А то зарежем.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Row, row, row your boat</title><link href="/row_row_row_your_boat.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:row_row_row_your_boat.html</id><summary type="html">&lt;h3&gt;Row, row, row your boat&lt;/h3&gt;
 &lt;p&gt;Row, row, row your boat&lt;br /&gt;
 Gently down the stream&lt;br /&gt;
 Merrily, merrily, merrily, merrily&lt;br /&gt;
@@ -703,7 +736,7 @@ Don't forget to scream!&lt;/p&gt;
 &lt;p&gt;Row, row, row your boat&lt;br /&gt;
 Gently to the shore&lt;br /&gt;
 If you see a lion&lt;br /&gt;
-Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><category term="детские песенки"></category></entry><entry><title>Песенка разбойников</title><link href="/pesenka_razboinikov-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_razboinikov-ru.html</id><summary type="html">&lt;h3&gt;Песенка разбойников&lt;/h3&gt;
+Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><category term="детские песенки"></category></entry><entry><title>Песенка разбойников</title><link href="/pesenka_razboinikov-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_razboinikov-ru.html</id><summary type="html">&lt;h3&gt;Песенка разбойников&lt;/h3&gt;
 &lt;p&gt;Говорят, мы бяки-буки, &lt;br /&gt;
 Как выносит нас земля? &lt;br /&gt;
 Дайте что ли карты в руки &lt;br /&gt;
@@ -727,7 +760,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Ой-ля-ля, Ой-ля-ля, &lt;br /&gt;
 Карты правду говорят.&lt;br /&gt;
 Ой-ля-ля, Ой-ля-ля,&lt;br /&gt;
-Ех-ха!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Пропала собака</title><link href="/propala_sobaka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:propala_sobaka-ru.html</id><summary type="html">&lt;h3&gt;Пропала собака&lt;/h3&gt;
+Ех-ха!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Пропала собака</title><link href="/propala_sobaka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:propala_sobaka-ru.html</id><summary type="html">&lt;h3&gt;Пропала собака&lt;/h3&gt;
 &lt;p&gt;Висит на заборе, колышется ветром,&lt;br /&gt;
 Колышется ветром бумажный листок.&lt;br /&gt;
 Пропала собака, пропала собака…&lt;br /&gt;
@@ -739,7 +772,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;А дождь-забияка листочек закапал,&lt;br /&gt;
 И буквы и строчки заплакали вдруг.&lt;br /&gt;
 Найдите собаку, найдите собаку!&lt;br /&gt;
-Вернись поскорее, мой маленький друг!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>До чего дошел прогресс</title><link href="/do_chego_doshel_progress-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:do_chego_doshel_progress-ru.html</id><summary type="html">&lt;h3&gt;До чего дошел прогресс&lt;/h3&gt;
+Вернись поскорее, мой маленький друг!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>До чего дошел прогресс</title><link href="/do_chego_doshel_progress-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:do_chego_doshel_progress-ru.html</id><summary type="html">&lt;h3&gt;До чего дошел прогресс&lt;/h3&gt;
 &lt;p&gt;До чего дошел прогресс,&lt;br /&gt;
 До невиданных чудес,&lt;br /&gt;
 Опустился на глубины&lt;br /&gt;
@@ -753,7 +786,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;До чего дошел прогресс,&lt;br /&gt;
 Было времени в обрез,&lt;br /&gt;
 А теперь гуляй по свету,&lt;br /&gt;
-Хочешь с песней, хочешь - без.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>Прекрасное далеко.</title><link href="/prekrasnoe_daleko-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:prekrasnoe_daleko-ru.html</id><summary type="html">&lt;h3&gt;Прекрасное далеко.&lt;/h3&gt;
+Хочешь с песней, хочешь - без.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>Прекрасное далеко.</title><link href="/prekrasnoe_daleko-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:prekrasnoe_daleko-ru.html</id><summary type="html">&lt;h3&gt;Прекрасное далеко.&lt;/h3&gt;
 &lt;p&gt;Слышу голос из прекрасного далёка,&lt;br /&gt;
 Голос утренний в серебряной росе.&lt;br /&gt;
 Слышу голос и манящая дорога&lt;br /&gt;
@@ -776,7 +809,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Я клянусь, что стану чище и добрее,&lt;br /&gt;
 И в беде не брошу друга никогда.&lt;br /&gt;
 Слышу голос - и спешу на зов скорее&lt;br /&gt;
-По дороге, на которой нет следа.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>По секрету всему свету</title><link href="/po_sekretu_vsemu_svetu-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:po_sekretu_vsemu_svetu-ru.html</id><summary type="html">&lt;h3&gt;По секрету всему свету&lt;/h3&gt;
+По дороге, на которой нет следа.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>По секрету всему свету</title><link href="/po_sekretu_vsemu_svetu-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:po_sekretu_vsemu_svetu-ru.html</id><summary type="html">&lt;h3&gt;По секрету всему свету&lt;/h3&gt;
 &lt;p&gt;Всем, всем, всем и каждому скажу&lt;br /&gt;
 Я, я, в секретов не держу&lt;br /&gt;
 Я, я, я не шкаф и не музей-&lt;br /&gt;
@@ -802,7 +835,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Всем, всем, всем и каждому скажу&lt;br /&gt;
 Я, я, в секретов не держу&lt;br /&gt;
 Я, я, я не шкаф и не музей-&lt;br /&gt;
-Хранить секреты от друзей!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Погоня</title><link href="/pogonia-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pogonia-ru.html</id><summary type="html">&lt;h3&gt;Погоня&lt;/h3&gt;
+Хранить секреты от друзей!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Погоня</title><link href="/pogonia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pogonia-ru.html</id><summary type="html">&lt;h3&gt;Погоня&lt;/h3&gt;
 &lt;p&gt;Усталость забыта,&lt;br /&gt;
 Колышется чад,&lt;br /&gt;
 И снова копыта,&lt;br /&gt;
@@ -822,7 +855,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;В удачу поверьте –&lt;br /&gt;
 И дело с концом.&lt;br /&gt;
 Да здравствует ветер,&lt;br /&gt;
-Который в лицо!&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка мамонтенка</title><link href="/pesenka_mamontenka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_mamontenka-ru.html</id><summary type="html">&lt;h3&gt;Песенка мамонтенка&lt;/h3&gt;
+Который в лицо!&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка мамонтенка</title><link href="/pesenka_mamontenka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_mamontenka-ru.html</id><summary type="html">&lt;h3&gt;Песенка мамонтенка&lt;/h3&gt;
 &lt;p&gt;По синему морю, к зеленой земле&lt;br /&gt;
 Плыву я на белом своем корабле.&lt;br /&gt;
 На белом своем корабле,&lt;br /&gt;
@@ -842,7 +875,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Ведь так не бывает на свете,&lt;br /&gt;
 Чтоб были потеряны дети.&lt;br /&gt;
 Ведь так не бывает на свете,&lt;br /&gt;
-Чтоб были потеряны дети.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Простая сказка.</title><link href="/prostaia_skazka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:prostaia_skazka-ru.html</id><summary type="html">&lt;h3&gt;Простая сказка.&lt;/h3&gt;
+Чтоб были потеряны дети.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Простая сказка.</title><link href="/prostaia_skazka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:prostaia_skazka-ru.html</id><summary type="html">&lt;h3&gt;Простая сказка.&lt;/h3&gt;
 &lt;p&gt;Одну простую сказку, а может и не сказку, &lt;br /&gt;
 А может не простую, хотим вам рассказать.&lt;br /&gt;
 Ее мы помним с детства, а может, и не с детства,&lt;br /&gt;
@@ -878,7 +911,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Идею этой сказки, а может, и не сказки,&lt;br /&gt;
 Поймет не только взрослый, но даже карапуз,-&lt;br /&gt;
 Не стойте и не прыгайте, не пойте не пляшите&lt;br /&gt;
-Там, где идет строительство или подвешен груз.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Оранжевая песня.</title><link href="/oranzhevaia_pesnia-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:oranzhevaia_pesnia-ru.html</id><summary type="html">&lt;h3&gt;Оранжевая песня.&lt;/h3&gt;
+Там, где идет строительство или подвешен груз.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Оранжевая песня.</title><link href="/oranzhevaia_pesnia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:oranzhevaia_pesnia-ru.html</id><summary type="html">&lt;h3&gt;Оранжевая песня.&lt;/h3&gt;
 &lt;p&gt;Вот уже подряд два дня&lt;br /&gt;
 Я сижу, рисую.&lt;br /&gt;
 Красок много у меня –&lt;br /&gt;
@@ -913,7 +946,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Стану взрослой, все равно&lt;br /&gt;
 Петь ее я буду.&lt;br /&gt;
 Даже если ты большой,&lt;br /&gt;
-Видеть очень хорошо:&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Королевская охрана</title><link href="/korolevskaia_okhrana-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:korolevskaia_okhrana-ru.html</id><summary type="html">&lt;h3&gt;Королевская охрана&lt;/h3&gt;
+Видеть очень хорошо:&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Королевская охрана</title><link href="/korolevskaia_okhrana-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:korolevskaia_okhrana-ru.html</id><summary type="html">&lt;h3&gt;Королевская охрана&lt;/h3&gt;
 &lt;p&gt;Почетна и завидна наша роль&lt;br /&gt;
 Не может без охранников король&lt;br /&gt;
 Когда идем - дрожит кругом земля.&lt;br /&gt;
@@ -928,7 +961,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 А мы всегда идем ему вослед&lt;br /&gt;
 Величество должны мы уберечь&lt;br /&gt;
 От всяческих ему не нужных встреч.&lt;br /&gt;
-Ох, рано встает охрана!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Лесной олень</title><link href="/lesnoi_olen-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:lesnoi_olen-ru.html</id><summary type="html">&lt;h3&gt;Лесной олень&lt;/h3&gt;
+Ох, рано встает охрана!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Лесной олень</title><link href="/lesnoi_olen-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:lesnoi_olen-ru.html</id><summary type="html">&lt;h3&gt;Лесной олень&lt;/h3&gt;
 &lt;p&gt;Осенью, в дождливый серый день&lt;br /&gt;
 Пробежал по городу олень.&lt;br /&gt;
 Он летел над гулкой мостовой&lt;br /&gt;
@@ -954,7 +987,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 И мчит меня олень в свою страну оленью,&lt;br /&gt;
 Где сосны рвутся в небо, где быль живет и небыль,&lt;br /&gt;
 Умчит меня туда, лесной олень.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Облака</title><link href="/oblaka-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:oblaka-ru.html</id><summary type="html">&lt;h3&gt;Облака&lt;/h3&gt;
+&lt;/blockquote&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Облака</title><link href="/oblaka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:oblaka-ru.html</id><summary type="html">&lt;h3&gt;Облака&lt;/h3&gt;
 &lt;p&gt;Мимо белого яблока луны,&lt;br /&gt;
 Мимо красного яблока заката&lt;br /&gt;
 Облака из неведомой страны&lt;br /&gt;
@@ -969,7 +1002,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Мы помчимся в заоблачную даль&lt;br /&gt;
 Мимо гаснущих звезд на небосклоне.&lt;br /&gt;
 К нам неслышно опустится звезда&lt;br /&gt;
-И ромашкой останется в ладони.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Неприятность эту мы переживем.</title><link href="/nepriiatnost_etu_my_perezhivem-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:nepriiatnost_etu_my_perezhivem-ru.html</id><summary type="html">&lt;h3&gt;Неприятность эту мы переживем.&lt;/h3&gt;
+И ромашкой останется в ладони.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Неприятность эту мы переживем.</title><link href="/nepriiatnost_etu_my_perezhivem-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:nepriiatnost_etu_my_perezhivem-ru.html</id><summary type="html">&lt;h3&gt;Неприятность эту мы переживем.&lt;/h3&gt;
 &lt;p&gt;В небесах высоко&lt;br /&gt;
 Ярко солнце светит.&lt;br /&gt;
 До чего же хорошо &lt;br /&gt;
@@ -993,7 +1026,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Если в сердце чужом&lt;br /&gt;
 Не найду ответа,&lt;br /&gt;
 Неприятность эту&lt;br /&gt;
-Мы переживем.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Ничего я не хочу!!!</title><link href="/nichego_ia_ne_khochu-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:nichego_ia_ne_khochu-ru.html</id><summary type="html">&lt;h3&gt;Ничего я не хочу!!!&lt;/h3&gt;
+Мы переживем.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Ничего я не хочу!!!</title><link href="/nichego_ia_ne_khochu-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:nichego_ia_ne_khochu-ru.html</id><summary type="html">&lt;h3&gt;Ничего я не хочу!!!&lt;/h3&gt;
 &lt;p&gt;сл.Ю.Энтина, муз.Ген.Гладкова, м/ф "По следам Бременских музыкантов"&lt;/p&gt;
 &lt;p&gt;Ах ты, бедная моя трубадурочка!&lt;br /&gt;
 Ну смотри, как исхудала фигурочка!&lt;br /&gt;
@@ -1006,7 +1039,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Ах, принцессочка моя горемычная,&lt;br /&gt;
 Скоро будут здесь певцы заграничные.&lt;br /&gt;
 Выбирай любого - все оплачу.&lt;br /&gt;
-Ничего я не хочу!!!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Песенка Кота Леопольда</title><link href="/pesenka_kota_leopolda-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_kota_leopolda-ru.html</id><summary type="html">&lt;h3&gt;Песенка Кота Леопольда&lt;/h3&gt;
+Ничего я не хочу!!!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Песенка Кота Леопольда</title><link href="/pesenka_kota_leopolda-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_kota_leopolda-ru.html</id><summary type="html">&lt;h3&gt;Песенка Кота Леопольда&lt;/h3&gt;
 &lt;p&gt;Кручу, кручу, кручу педали, кручу,&lt;br /&gt;
 С горы, с горы, с горы как птица лечу.&lt;br /&gt;
 Спешу, спешу, спешу, спешу налегке&lt;br /&gt;
@@ -1026,7 +1059,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Лечу, лечу, лечу не знаю куда,&lt;br /&gt;
 Хочу, хочу чтоб это было всегда,&lt;br /&gt;
 Сильней, сильней, сильней лишь зубы сомкну,&lt;br /&gt;
-Но я назад не поверну!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка про кузнечика</title><link href="/pesenka_pro_kuznechika-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_pro_kuznechika-ru.html</id><summary type="html">&lt;h3&gt;Песенка про кузнечика&lt;/h3&gt;
+Но я назад не поверну!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песенка про кузнечика</title><link href="/pesenka_pro_kuznechika-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_pro_kuznechika-ru.html</id><summary type="html">&lt;h3&gt;Песенка про кузнечика&lt;/h3&gt;
 &lt;p&gt;В траве сидел кузнечик, в траве сидел кузнечик,&lt;br /&gt;
 Совсем как огуречик, зелененький он был.&lt;br /&gt;
 Представьте себе, представьте себе,&lt;br /&gt;
@@ -1050,7 +1083,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Представьте себе, представьте себе,&lt;br /&gt;
 Никак не ожидал он&lt;br /&gt;
 Представьте себе, представьте себе,&lt;br /&gt;
-Такого вот конца.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Куда уходит детство</title><link href="/kuda_ukhodit_detstvo-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kuda_ukhodit_detstvo-ru.html</id><summary type="html">&lt;h3&gt;Куда уходит детство&lt;/h3&gt;
+Такого вот конца.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Куда уходит детство</title><link href="/kuda_ukhodit_detstvo-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kuda_ukhodit_detstvo-ru.html</id><summary type="html">&lt;h3&gt;Куда уходит детство&lt;/h3&gt;
 &lt;p&gt;Куда уходит детство,&lt;br /&gt;
 В какие города?&lt;br /&gt;
 И где найти нам средство&lt;br /&gt;
@@ -1081,7 +1114,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Оно ушло неслышно,&lt;br /&gt;
 Пока весь город спит,&lt;br /&gt;
 И писем не напишет&lt;br /&gt;
-И вряд ли позвонит.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Крылатые качели.</title><link href="/krylatye_kacheli-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:krylatye_kacheli-ru.html</id><summary type="html">&lt;h3&gt;Крылатые качели.&lt;/h3&gt;
+И вряд ли позвонит.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Крылатые качели.</title><link href="/krylatye_kacheli-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:krylatye_kacheli-ru.html</id><summary type="html">&lt;h3&gt;Крылатые качели.&lt;/h3&gt;
 &lt;p&gt;В юном месяце апреле &lt;br /&gt;
 В старом парке тает снег&lt;br /&gt;
 И крылатые качели &lt;br /&gt;
@@ -1110,7 +1143,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Позабыто все на свете, &lt;br /&gt;
 Сердце замерло в груди -&lt;br /&gt;
 Только небо, только ветер, &lt;br /&gt;
-Только счастье впереди.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>Что тебе снится, крейсер Аврора?</title><link href="/chto_tebe_snitsia_kreiser_avrora-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chto_tebe_snitsia_kreiser_avrora-ru.html</id><summary type="html">&lt;h3&gt;Что тебе снится, крейсер Аврора?&lt;/h3&gt;
+Только счастье впереди.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>Что тебе снится, крейсер Аврора?</title><link href="/chto_tebe_snitsia_kreiser_avrora-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chto_tebe_snitsia_kreiser_avrora-ru.html</id><summary type="html">&lt;h3&gt;Что тебе снится, крейсер Аврора?&lt;/h3&gt;
 &lt;p&gt;Дремлет притихший северный город,&lt;br /&gt;
 Низкое небо над головой.&lt;br /&gt;
 Что тебе снится крейсер Аврора&lt;br /&gt;
@@ -1135,7 +1168,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 В час, когда утро встает над Невой?&lt;br /&gt;
 Что тебе снится крейсер Аврора&lt;br /&gt;
 В час, когда утро встает над Невой?&lt;/p&gt;
-&lt;p&gt;Что тебе снится крейсер Аврора?&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Колыбельная медведицы</title><link href="/kolybelnaia_medveditsy-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kolybelnaia_medveditsy-ru.html</id><summary type="html">&lt;h3&gt;Колыбельная медведицы&lt;/h3&gt;
+&lt;p&gt;Что тебе снится крейсер Аврора?&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Колыбельная медведицы</title><link href="/kolybelnaia_medveditsy-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kolybelnaia_medveditsy-ru.html</id><summary type="html">&lt;h3&gt;Колыбельная медведицы&lt;/h3&gt;
 &lt;p&gt;Ложкой снег мешая,&lt;br /&gt;
 Ночь идет большая,&lt;br /&gt;
 Что же ты, глупышка, не спишь?&lt;br /&gt;
@@ -1147,7 +1180,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 По седым, суровым морям.&lt;br /&gt;
 И всю ночь соседи,&lt;br /&gt;
 Звездные медведи&lt;br /&gt;
-Светят дальним кораблям.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Песенка Красной Шапочки</title><link href="/pesenka_krasnoi_shapochki-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_krasnoi_shapochki-ru.html</id><summary type="html">&lt;h3&gt;Песенка Красной Шапочки&lt;/h3&gt;
+Светят дальним кораблям.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Песенка Красной Шапочки</title><link href="/pesenka_krasnoi_shapochki-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_krasnoi_shapochki-ru.html</id><summary type="html">&lt;h3&gt;Песенка Красной Шапочки&lt;/h3&gt;
 &lt;p&gt;Если долго, долго, долго, если долго по тропинке,&lt;br /&gt;
 Если долго по дорожке, топать, ехать и бежать,&lt;br /&gt;
 То, пожалуй, то, конечно, то, наверно-верно-верно,&lt;br /&gt;
@@ -1168,7 +1201,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Но, конечно, но, конечно, если ты такой ленивый,&lt;br /&gt;
 Если ты такой пугливый, сиди дома не гуляй.&lt;br /&gt;
 Ни к чему тебе дороги, косогоры, горы, горы,&lt;br /&gt;
-Буераки, реки, раки, руки, ноги береги.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Колыбельная</title><link href="/kolybelnaia-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kolybelnaia-ru.html</id><summary type="html">&lt;h3&gt;Колыбельная&lt;/h3&gt;
+Буераки, реки, раки, руки, ноги береги.&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Колыбельная</title><link href="/kolybelnaia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kolybelnaia-ru.html</id><summary type="html">&lt;h3&gt;Колыбельная&lt;/h3&gt;
 &lt;p&gt;Спи, моя радость, усни!&lt;br /&gt;
 В доме погасли огни,&lt;br /&gt;
 Пчелки затихли в саду,&lt;br /&gt;
@@ -1195,7 +1228,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Только б не плакал малыш!&lt;br /&gt;
 Пусть бы так было все дни!&lt;br /&gt;
 Спи, моя радость, усни!&lt;br /&gt;
-Усни, усни!&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Песенка о капитане</title><link href="/pesenka_o_kapitane-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_o_kapitane-ru.html</id><summary type="html">&lt;h3&gt;Песенка о капитане&lt;/h3&gt;
+Усни, усни!&lt;/p&gt;</summary><category term="детские песенки"></category><category term="колыбельная"></category></entry><entry><title>Песенка о капитане</title><link href="/pesenka_o_kapitane-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_o_kapitane-ru.html</id><summary type="html">&lt;h3&gt;Песенка о капитане&lt;/h3&gt;
 &lt;p&gt;Жил отважный капитан,&lt;br /&gt;
 Он обьездил много стран&lt;br /&gt;
 И не раз он бороздил океан.&lt;br /&gt;
@@ -1218,7 +1251,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Заикался и бледнел,&lt;br /&gt;
 Но ни разу улыбнуться не посмел.&lt;br /&gt;
 Он мрачнел, он зудел,&lt;br /&gt;
-И никто ему по-дружески не спел:&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Кабы не было зимы.</title><link href="/kaby_ne_bylo_zimy-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kaby_ne_bylo_zimy-ru.html</id><summary type="html">&lt;h3&gt;Кабы не было зимы.&lt;/h3&gt;
+И никто ему по-дружески не спел:&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category></entry><entry><title>Кабы не было зимы.</title><link href="/kaby_ne_bylo_zimy-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kaby_ne_bylo_zimy-ru.html</id><summary type="html">&lt;h3&gt;Кабы не было зимы.&lt;/h3&gt;
 &lt;p&gt;Кабы не было зимы&lt;br /&gt;
 В городах и селах,&lt;br /&gt;
 Никогда б не знали мы&lt;br /&gt;
@@ -1248,7 +1281,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Лед на речке не замерз,&lt;br /&gt;
 Кабы, кабы, кабы...&lt;br /&gt;
 Лед на речке не замерз,&lt;br /&gt;
-Кабы, кабы, кабы...&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Простоквашино"></category></entry><entry><title>Из чего сделаны мальчики и девочки</title><link href="/iz_chego_sdelany_malchiki_i_devochki-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:iz_chego_sdelany_malchiki_i_devochki-ru.html</id><summary type="html">&lt;h3&gt;Из чего сделаны мальчики и девочки&lt;/h3&gt;
+Кабы, кабы, кабы...&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Простоквашино"></category></entry><entry><title>Из чего сделаны мальчики и девочки</title><link href="/iz_chego_sdelany_malchiki_i_devochki-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:iz_chego_sdelany_malchiki_i_devochki-ru.html</id><summary type="html">&lt;h3&gt;Из чего сделаны мальчики и девочки&lt;/h3&gt;
 &lt;p&gt;Из чего только сделаны мальчики?&lt;br /&gt;
 Из чего только сделаны мальчики?&lt;br /&gt;
 Из колючек, ракушек&lt;br /&gt;
@@ -1258,7 +1291,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Из чего только сделаны девочки?&lt;br /&gt;
 Из конфет и пирожных,&lt;br /&gt;
 Из сластей всевозможных,&lt;br /&gt;
-Вот из этого сделаны девочки.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Песенка львенка и черепахи.</title><link href="/pesenka_lvenka_i_cherepakhi-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_lvenka_i_cherepakhi-ru.html</id><summary type="html">&lt;h3&gt;Песенка львенка и черепахи.&lt;/h3&gt;
+Вот из этого сделаны девочки.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Песенка львенка и черепахи.</title><link href="/pesenka_lvenka_i_cherepakhi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesenka_lvenka_i_cherepakhi-ru.html</id><summary type="html">&lt;h3&gt;Песенка львенка и черепахи.&lt;/h3&gt;
 &lt;p&gt;Я на солнышке лежу,&lt;br /&gt;
 Я на солнышко гляжу,&lt;br /&gt;
 Все лежу и лежу&lt;br /&gt;
@@ -1270,7 +1303,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Рядом львеночек лежит&lt;br /&gt;
 И ушами шевелит,&lt;br /&gt;
 Только я - все лежу&lt;br /&gt;
-И на солнышко гляжу.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Голубой вагон.</title><link href="/goluboi_vagon-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:goluboi_vagon-ru.html</id><summary type="html">&lt;h3&gt;Голубой вагон.&lt;/h3&gt;
+И на солнышко гляжу.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Голубой вагон.</title><link href="/goluboi_vagon-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:goluboi_vagon-ru.html</id><summary type="html">&lt;h3&gt;Голубой вагон.&lt;/h3&gt;
 &lt;p&gt;Медленно минуты уплывают вдаль,&lt;br /&gt;
 Встречи с ними ты уже не жди,&lt;br /&gt;
 И хотя нам прошлого немного жаль,&lt;br /&gt;
@@ -1289,7 +1322,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Голубой вагон бежит-качается,&lt;br /&gt;
 Скорый поезд набирает ход,&lt;br /&gt;
 Ах, зачем же этот день кончается,&lt;br /&gt;
-Лучше б он тянулся целый год.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Когда мои друзья со мной</title><link href="/kogda_moi_druzia_so_mnoi-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kogda_moi_druzia_so_mnoi-ru.html</id><summary type="html">&lt;h3&gt;Когда мои друзья со мной&lt;/h3&gt;
+Лучше б он тянулся целый год.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Когда мои друзья со мной</title><link href="/kogda_moi_druzia_so_mnoi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:kogda_moi_druzia_so_mnoi-ru.html</id><summary type="html">&lt;h3&gt;Когда мои друзья со мной&lt;/h3&gt;
 &lt;p&gt;Если с другом вышел в путь,&lt;br /&gt;
 Если с другом вышел в путь,&lt;br /&gt;
 Веселей дорога!&lt;br /&gt;
@@ -1316,7 +1349,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Выйду без испуга.&lt;br /&gt;
 Если с другом буду я, &lt;br /&gt;
 Если с другом буду я,&lt;br /&gt;
-А медведь без друга!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Елочка.</title><link href="/elochka-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:elochka-ru.html</id><summary type="html">&lt;h3&gt;Елочка.&lt;/h3&gt;
+А медведь без друга!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Елочка.</title><link href="/elochka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:elochka-ru.html</id><summary type="html">&lt;h3&gt;Елочка.&lt;/h3&gt;
 &lt;p&gt;В лесу родилась елочка,&lt;br /&gt;
 В лесу она росла,&lt;br /&gt;
 Зимой и летом стройная,&lt;br /&gt;
@@ -1340,7 +1373,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Теперь она, нарядная,&lt;br /&gt;
 На праздник к нам пришла.&lt;br /&gt;
 И много, много радости&lt;br /&gt;
-Детишкам принесла.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="новогодняя"></category></entry><entry><title>Если добрый ты</title><link href="/esli_dobryi_ty-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:esli_dobryi_ty-ru.html</id><summary type="html">&lt;h3&gt;Если добрый ты&lt;/h3&gt;
+Детишкам принесла.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="новогодняя"></category></entry><entry><title>Если добрый ты</title><link href="/esli_dobryi_ty-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:esli_dobryi_ty-ru.html</id><summary type="html">&lt;h3&gt;Если добрый ты&lt;/h3&gt;
 &lt;p&gt;Дождик босиком по земле прошел,&lt;br /&gt;
 Клены по плечам хлопал…&lt;br /&gt;
 Если ясный день, это хорошо,&lt;br /&gt;
@@ -1352,7 +1385,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;С каждым поделись радостью своей,&lt;br /&gt;
 Рассыпая смех звучно…&lt;br /&gt;
 Если песни петь, с ними веселей,&lt;br /&gt;
-А когда наоборот - скучно!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Маленькая елочка</title><link href="/malenkaia_elochka-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:malenkaia_elochka-ru.html</id><summary type="html">&lt;h3&gt;Маленькая елочка&lt;/h3&gt;
+А когда наоборот - скучно!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Леопольд"></category></entry><entry><title>Маленькая елочка</title><link href="/malenkaia_elochka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:malenkaia_elochka-ru.html</id><summary type="html">&lt;h3&gt;Маленькая елочка&lt;/h3&gt;
 &lt;p&gt;Маленькой елочке холодно зимой .&lt;br /&gt;
 Из лесу елочку взяли мы домой.&lt;br /&gt;
 Из лесу елочку взяли мы домой.&lt;/p&gt;
@@ -1367,7 +1400,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Весело-весело встретим Новый год !&lt;/p&gt;
 &lt;p&gt;Маленькой елочке холодно зимой,&lt;br /&gt;
 Из лесу елочку взяли мы домой.&lt;br /&gt;
-Из лесу елочку взяли мы домой.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="новогодняя"></category></entry><entry><title>Мы едем, едем, едем</title><link href="/my_edem_edem_edem-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:my_edem_edem_edem-ru.html</id><summary type="html">&lt;h3&gt;Мы едем, едем, едем&lt;/h3&gt;
+Из лесу елочку взяли мы домой.&lt;/p&gt;</summary><category term="детские песенки"></category><category term="новогодняя"></category></entry><entry><title>Мы едем, едем, едем</title><link href="/my_edem_edem_edem-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:my_edem_edem_edem-ru.html</id><summary type="html">&lt;h3&gt;Мы едем, едем, едем&lt;/h3&gt;
 &lt;p&gt;Мы едем, едем, едем в далёкие края,&lt;br /&gt;
 Хорошие соседи, счастливые друзья!&lt;br /&gt;
 Нам весело живётся, мы песенку поём,&lt;br /&gt;
@@ -1386,7 +1419,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Мы ехали, мы пели и с песенкой смешной&lt;br /&gt;
 Все вместе, как сумели, приехали домой!&lt;br /&gt;
 Нам солнышко светило, нас ветер обвевал,&lt;br /&gt;
-В пути не скучно было, и каждый напевал.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Два веселых гуся</title><link href="/dva_veselykh_gusia-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dva_veselykh_gusia-ru.html</id><summary type="html">&lt;h3&gt;Два веселых гуся&lt;/h3&gt;
+В пути не скучно было, и каждый напевал.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Два веселых гуся</title><link href="/dva_veselykh_gusia-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dva_veselykh_gusia-ru.html</id><summary type="html">&lt;h3&gt;Два веселых гуся&lt;/h3&gt;
 &lt;p&gt;Жили у бабуси&lt;br /&gt;
 Два веселых гуся:&lt;br /&gt;
       Один - серый, &lt;br /&gt;
@@ -1411,7 +1444,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Кланялись бабусе.&lt;br /&gt;
       Один - серый, &lt;br /&gt;
       Другой - белый - &lt;br /&gt;
-      Кланялись бабусе.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>Shopping links</title><link href="/shopping_links.html" rel="alternate"></link><updated>2014-11-14T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:shopping_links.html</id><summary type="html">&lt;h2&gt;Useful links&lt;/h2&gt;
+      Кланялись бабусе.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>Shopping links</title><link href="/shopping_links.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:shopping_links.html</id><summary type="html">&lt;h2&gt;Useful links&lt;/h2&gt;
 &lt;h3&gt;Shopping in HK&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -1468,7 +1501,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
-&lt;/table&gt;</summary><category term="shop"></category><category term="HK"></category></entry><entry><title>Вот что значит настоящий, верный друг</title><link href="/vot_chto_znachit_nastoiashchii_vernyi_drug-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:vot_chto_znachit_nastoiashchii_vernyi_drug-ru.html</id><summary type="html">&lt;h3&gt;Вот что значит настоящий, верный друг&lt;/h3&gt;
+&lt;/table&gt;</summary><category term="shop"></category><category term="HK"></category></entry><entry><title>Вот что значит настоящий, верный друг</title><link href="/vot_chto_znachit_nastoiashchii_vernyi_drug-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:vot_chto_znachit_nastoiashchii_vernyi_drug-ru.html</id><summary type="html">&lt;h3&gt;Вот что значит настоящий, верный друг&lt;/h3&gt;
 &lt;p&gt;Дружба крепкая не сломается,&lt;br /&gt;
 Не расклеится от дождей и вьюг.&lt;br /&gt;
 Друг в беде не бросит,&lt;br /&gt;
@@ -1492,7 +1525,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Вот что значит настоящий, верный друг,&lt;br /&gt;
 Нужным быть кому-то&lt;br /&gt;
 В трудную минуту&lt;br /&gt;
-Вот что значит настоящий, верный друг!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Чунга-чанга</title><link href="/chunga_changa-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chunga_changa-ru.html</id><summary type="html">&lt;h3&gt;Чунга-чанга&lt;/h3&gt;
+Вот что значит настоящий, верный друг!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Чунга-чанга</title><link href="/chunga_changa-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chunga_changa-ru.html</id><summary type="html">&lt;h3&gt;Чунга-чанга&lt;/h3&gt;
 &lt;p&gt;Чунга-чанга! Синий небосвод!&lt;br /&gt;
 Чунга-чанга! Лето - круглый год!&lt;br /&gt;
 Чунга-чанга! Весело живем!&lt;br /&gt;
@@ -1511,7 +1544,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Чунга-чанга! Места лучше нет!&lt;br /&gt;
 Чунга-чанга! Мы не знаем бед!&lt;br /&gt;
 Чунга-чанга! Кто здесь прожил час -&lt;br /&gt;
-Чунга-чанга! Не покинет нас!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>История о мальчике Бобби</title><link href="/istoriia_o_malchike_bobbi-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:istoriia_o_malchike_bobbi-ru.html</id><summary type="html">&lt;h3&gt;История о мальчике Бобби&lt;/h3&gt;
+Чунга-чанга! Не покинет нас!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>История о мальчике Бобби</title><link href="/istoriia_o_malchike_bobbi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:istoriia_o_malchike_bobbi-ru.html</id><summary type="html">&lt;h3&gt;История о мальчике Бобби&lt;/h3&gt;
 &lt;p&gt;С рождения Бобби пай-мальчиком был. (молодец)&lt;br /&gt;
 Имел Бобби хобби – он деньги любил. (хороший мальчик)&lt;br /&gt;
 Любил и копил.&lt;br /&gt;
@@ -1531,7 +1564,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Скопил целый фунт.&lt;br /&gt;
 Но в том-то и дело, что он не один, (почему?)&lt;br /&gt;
 Кто больше всех деньги на свете любил, (человек)&lt;br /&gt;
-Он это забыл.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Человек собаке друг</title><link href="/chelovek_sobake_drug-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chelovek_sobake_drug-ru.html</id><summary type="html">&lt;h3&gt;Человек собаке друг&lt;/h3&gt;
+Он это забыл.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Человек собаке друг</title><link href="/chelovek_sobake_drug-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chelovek_sobake_drug-ru.html</id><summary type="html">&lt;h3&gt;Человек собаке друг&lt;/h3&gt;
 &lt;p&gt;Человек собаке друг,&lt;br /&gt;
 Это знают все вокруг.&lt;br /&gt;
 Понятно всем как дважды-два,&lt;br /&gt;
@@ -1546,7 +1579,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Лапу первым подает,&lt;br /&gt;
 Волю нервам не дает.&lt;br /&gt;
 Еще никто не замечал,&lt;br /&gt;
-Чтобы хоть раз он зарычал!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песня Чебурашки</title><link href="/pesnia_cheburashki-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesnia_cheburashki-ru.html</id><summary type="html">&lt;h3&gt;Песня Чебурашки&lt;/h3&gt;
+Чтобы хоть раз он зарычал!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Песня Чебурашки</title><link href="/pesnia_cheburashki-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:pesnia_cheburashki-ru.html</id><summary type="html">&lt;h3&gt;Песня Чебурашки&lt;/h3&gt;
 &lt;p&gt;Я был когда-то странной&lt;br /&gt;
 Игрушкой безымянной,&lt;br /&gt;
 К которой в магазине&lt;br /&gt;
@@ -1562,7 +1595,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Теперь я вместе с Геной&lt;br /&gt;
 Он не обыкновенный,&lt;br /&gt;
 Он самый лучший &lt;br /&gt;
-В мире крокодил!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Бременские музыканты</title><link href="/bremenskie_muzykanty-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:bremenskie_muzykanty-ru.html</id><summary type="html">&lt;h3&gt;Бременские музыканты&lt;/h3&gt;
+В мире крокодил!&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Чебурашка"></category></entry><entry><title>Бременские музыканты</title><link href="/bremenskie_muzykanty-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:bremenskie_muzykanty-ru.html</id><summary type="html">&lt;h3&gt;Бременские музыканты&lt;/h3&gt;
 &lt;p&gt;Ничего на свете лучше нету,&lt;br /&gt;
 Чем бродить друзьям по белу свету.&lt;br /&gt;
 Тем, кто дружен, не страшны тревоги,&lt;br /&gt;
@@ -1574,7 +1607,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Мы свое призванье не забудем:&lt;br /&gt;
 Смех и радость мы приносим людям.&lt;br /&gt;
 Нам дворцов заманчивые своды &lt;br /&gt;
-Не заменят никогда свободы.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Бабушки-старушки</title><link href="/babushki_starushki-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:babushki_starushki-ru.html</id><summary type="html">&lt;h3&gt;Бабушки-старушки&lt;/h3&gt;
+Не заменят никогда свободы.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Бременские музыканты"></category></entry><entry><title>Бабушки-старушки</title><link href="/babushki_starushki-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:babushki_starushki-ru.html</id><summary type="html">&lt;h3&gt;Бабушки-старушки&lt;/h3&gt;
 &lt;p&gt;У подъезда кто сидит&lt;br /&gt;
 Целый день обычно.&lt;br /&gt;
 Кто на нас всегда сердит&lt;br /&gt;
@@ -1603,7 +1636,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Даже участковый.&lt;br /&gt;
 И боится их порой&lt;br /&gt;
 Даже участковый!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Частушки Бабок-Ёжек</title><link href="/chastushki_babok_iozhek-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chastushki_babok_iozhek-ru.html</id><summary type="html">&lt;h3&gt;Частушки Бабок-Ёжек&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Частушки Бабок-Ёжек</title><link href="/chastushki_babok_iozhek-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:chastushki_babok_iozhek-ru.html</id><summary type="html">&lt;h3&gt;Частушки Бабок-Ёжек&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Растяни меха гармошка&lt;br /&gt;
@@ -1629,7 +1662,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 &lt;p&gt;Самый вредный из людей -&lt;br /&gt;
 Это сказочник - злодей.&lt;br /&gt;
 Вот уж врун искусный,&lt;br /&gt;
-Жаль, что он невкусный.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Антошка</title><link href="/antoshka-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:antoshka-ru.html</id><summary type="html">&lt;h3&gt;Антошка&lt;/h3&gt;
+Жаль, что он невкусный.&lt;/p&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category></entry><entry><title>Антошка</title><link href="/antoshka-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:antoshka-ru.html</id><summary type="html">&lt;h3&gt;Антошка&lt;/h3&gt;
 &lt;p&gt;Антошка, Антошка, пойдем копать картошку.&lt;br /&gt;
 Антошка, Антошка, пойдем копать картошку.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;
@@ -1659,7 +1692,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Откажусь теперь едва ли!&lt;br /&gt;
 Тарам - пам - пам,&lt;br /&gt;
 Тарам - пам - пам.&lt;/p&gt;
-&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>Тридцать три коровы.</title><link href="/tridtsat_tri_korovy-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:tridtsat_tri_korovy-ru.html</id><summary type="html">&lt;h3&gt;Тридцать три коровы.&lt;/h3&gt;
+&lt;/blockquote&gt;</summary><category term="м/ф"></category><category term="детские песенки"></category><category term="Веселая карусель"></category></entry><entry><title>Тридцать три коровы.</title><link href="/tridtsat_tri_korovy-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:tridtsat_tri_korovy-ru.html</id><summary type="html">&lt;h3&gt;Тридцать три коровы.&lt;/h3&gt;
 &lt;p&gt;В центре города большого, &lt;br /&gt;
 Где травинки не растет,&lt;br /&gt;
 Жил поэт, волшебник слова, &lt;br /&gt;
@@ -1687,7 +1720,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Очень вырос наш поэт&lt;br /&gt;
 Ведь молочная диета &lt;br /&gt;
 Благотворна для поэтов,&lt;br /&gt;
-Если им всего шесть лет.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Дважды два - четыре</title><link href="/dvazhdy_dva_chetyre-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dvazhdy_dva_chetyre-ru.html</id><summary type="html">&lt;h3&gt;Дважды два - четыре&lt;/h3&gt;
+Если им всего шесть лет.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Дважды два - четыре</title><link href="/dvazhdy_dva_chetyre-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-05:dvazhdy_dva_chetyre-ru.html</id><summary type="html">&lt;h3&gt;Дважды два - четыре&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Дважды два - четыре,&lt;br /&gt;
@@ -1716,7 +1749,7 @@ Don’t forget to roar!&lt;/p&gt;</summary><category term="english"></category><
 Неизменно тридцать шесть!&lt;br /&gt;
 Шестью шесть - тридцать шесть!&lt;br /&gt;
 Шестью шесть - тридцать шесть!&lt;br /&gt;
-Совершенно верно!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>The wheels on the bus go round</title><link href="/wheels_on_the_bus_go_round-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-02:wheels_on_the_bus_go_round-ru.html</id><summary type="html">&lt;h3&gt;The wheels on the bus go round and round&lt;/h3&gt;
+Совершенно верно!&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>The wheels on the bus go round</title><link href="/wheels_on_the_bus_go_round-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-02:wheels_on_the_bus_go_round-ru.html</id><summary type="html">&lt;h3&gt;The wheels on the bus go round and round&lt;/h3&gt;
 &lt;p&gt;The wheels on the bus go round and round.&lt;br /&gt;
 round and round.&lt;br /&gt;
 round and round.&lt;br /&gt;
@@ -1765,7 +1798,7 @@ all through the town!&lt;/p&gt;
 &lt;p&gt;The mummy on the bus says, I love you.&lt;br /&gt;
 I love you, I love you&lt;br /&gt;
 The daddy on the bus says, I love you, too.&lt;br /&gt;
-All through the town.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Пусть всегда будет солнце</title><link href="/pust_vsegda_budet_solnce-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:pust_vsegda_budet_solnce-ru.html</id><summary type="html">&lt;h3&gt;Пусть всегда будет Солнце&lt;/h3&gt;
+All through the town.&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Пусть всегда будет солнце</title><link href="/pust_vsegda_budet_solnce-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:pust_vsegda_budet_solnce-ru.html</id><summary type="html">&lt;h3&gt;Пусть всегда будет Солнце&lt;/h3&gt;
 &lt;p&gt;Солнечный круг, небо вокруг -&lt;br /&gt;
 Это рисунок мальчишки.&lt;br /&gt;
 Нарисовал он на листке&lt;br /&gt;
@@ -1795,7 +1828,7 @@ All through the town.&lt;/p&gt;</summary><category term="детские песе
 Встанем за наших мальчишек.&lt;br /&gt;
 Солнце - навек! Счастье - навек! -&lt;br /&gt;
 Так повелел человек. &lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Тыквенный суп-пюре</title><link href="/soup_pure_tykva-ru.html" rel="alternate"></link><updated>2014-11-08T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:soup_pure_tykva-ru.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Ингридиенты:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="детские песенки"></category></entry><entry><title>Тыквенный суп-пюре</title><link href="/soup_pure_tykva-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:soup_pure_tykva-ru.html</id><summary type="html">&lt;p&gt;&lt;strong&gt;Ингридиенты:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Тыква (500 г)&lt;/li&gt;
 &lt;li&gt;Картофель (300 г)&lt;/li&gt;
@@ -1819,7 +1852,7 @@ All through the town.&lt;/p&gt;</summary><category term="детские песе
 &lt;/ol&gt;
 &lt;p&gt;&lt;strong&gt;Вариации&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;с морковкой&lt;br /&gt;
-с фасолью&lt;/p&gt;</summary><category term="суп"></category><category term="суп-пюре"></category></entry><entry><title>Крылатые качели</title><link href="/v_unom_mecjace_aprele-ru.html" rel="alternate"></link><updated>2014-11-12T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:v_unom_mecjace_aprele-ru.html</id><summary type="html">&lt;p&gt;В юном месяце апреле&lt;br /&gt;
+с фасолью&lt;/p&gt;</summary><category term="суп"></category><category term="суп-пюре"></category></entry><entry><title>Крылатые качели</title><link href="/v_unom_mecjace_aprele-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-11-01:v_unom_mecjace_aprele-ru.html</id><summary type="html">&lt;p&gt;В юном месяце апреле&lt;br /&gt;
 В старом парке тает снег,&lt;br /&gt;
 И весёлые качели&lt;br /&gt;
 Начинают свой разбег.&lt;br /&gt;
@@ -1859,7 +1892,48 @@ All through the town.&lt;/p&gt;</summary><category term="детские песе
 Только радость впереди.&lt;br /&gt;
 Только небо, только ветер,&lt;br /&gt;
 Только радость впереди.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>Minsk (Belarus) - Kirishi (Russia)</title><link href="/minsk-kirishi-ru.html" rel="alternate"></link><updated>2014-11-21T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-07-30:minsk-kirishi-ru.html</id><summary type="html">&lt;h3&gt;Путешествие в Кириши (РФ).&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;Припев&lt;/strong&gt;&lt;/p&gt;</summary><category term="к/ф"></category><category term="детские песенки"></category><category term="Приключения Электроника"></category></entry><entry><title>MYSQL: my.cnf</title><link href="/my_cnf.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-09-01:my_cnf.html</id><summary type="html">&lt;h3&gt;my.cnf&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[client]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+
+&lt;span class="k"&gt;[mysqld]&lt;/span&gt;
+&lt;span class="na"&gt;collation-server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8_unicode_ci&lt;/span&gt;
+&lt;span class="na"&gt;character-set-server&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;span class="na"&gt;default-storage-engine&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;InnoDB&lt;/span&gt;
+
+&lt;span class="k"&gt;[mysql]&lt;/span&gt;
+&lt;span class="na"&gt;default-character-set&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;utf8&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="MySQL"></category></entry><entry><title>LINUX: usb flash drive as swap</title><link href="/linux_usb_flash_drive_as_swap.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2014-03-10:linux_usb_flash_drive_as_swap.html</id><summary type="html">&lt;h3&gt;usb flash drive as swap&lt;/h3&gt;
+&lt;p&gt;Change usb flash to another better label. A have had ADATA UFD, but I doesn't like spaces, so I'd like to change it to SWAP_USB&lt;/p&gt;
+&lt;p&gt;to skip test before all we need change config to avoid error:&lt;/p&gt;
+&lt;p&gt;Total number of sectors (30869504) not a multiple of sectors per track (63)!&lt;br /&gt;
+Add &lt;code&gt;mtools_skip_check=1&lt;/code&gt; to your &lt;code&gt;.mtoolsrc&lt;/code&gt; file to skip this test&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;echo&lt;/span&gt; &lt;span class="n"&gt;mtools_skip_check&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mtoolsrc&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and then change label:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;mlabel&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sdb&lt;/span&gt; &lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;swap_usb&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Make swap file&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;dd&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;zero&lt;/span&gt; &lt;span class="n"&gt;of&lt;/span&gt;&lt;span class="o"&gt;=/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;znotdead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWAP_USB&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;swap&lt;/span&gt; &lt;span class="n"&gt;bs&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;4096&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;524288&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;we will get 2Gb file (2 * 1024 * 1024^2 / 4096 = 524288)&lt;/p&gt;
+&lt;p&gt;Make swap:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;mkswap&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;znotdead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWAP_USB&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;swap&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Turn swap on:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;swapon&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;znotdead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;SWAP_USB&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;swap&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>LINUX: limit speed on apt-get</title><link href="/linux_limit_speed_on_apt_get.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2013-02-08:linux_limit_speed_on_apt_get.html</id><summary type="html">&lt;h3&gt;limit speed on apt-get&lt;/h3&gt;
+&lt;p&gt;Limiting speed to near 200 kB/s. Note that not exactly.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;sudo&lt;/span&gt; &lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;o&lt;/span&gt;  &lt;span class="n"&gt;Acquire&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;http&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;Dl&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;Limit&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="n"&gt;dist&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;upgrade&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>Minsk (Belarus) - Kirishi (Russia)</title><link href="/minsk-kirishi-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-07-30:minsk-kirishi-ru.html</id><summary type="html">&lt;h3&gt;Путешествие в Кириши (РФ).&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Карта путешествий&lt;/strong&gt;&lt;/p&gt;
 &lt;iframe src="https://mapsengine.google.com/map/embed?mid=zLClmVqlU_kM.kgOnnqEUfGXg" width="640" height="480"&gt;&lt;/iframe&gt;
 
@@ -1873,4 +1947,493 @@ All through the town.&lt;/p&gt;</summary><category term="детские песе
     - 2 раза подкладывали ветки.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Лучший маршрут:&lt;/strong&gt; E95 - A120 - E105&lt;/p&gt;
 &lt;p&gt;&lt;em&gt;А могло быть так:&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Lisena: 27.04.2012 года была коварно заведена навигатором на эту же дорогу. Ехала на ВАЗ 2110 из Санкт-Петербурга в Кириши Л.О., навигатор настойчиво рекомендовал свернуть в Любани, после повората на Любани через 9 км дорога внезапно кончилась, началась грунтовка довольно таки не плохая. Проехав по ней 20-25 км в глухом лесу с мигрирующими жабами и парой брошенных машин на обочине, я вдруг оказалась в болоте по самые двери. Связи в этом чудо-лесу нет!!! В моем спасении было задействовано: Нисан, Уазик, Газель и Нива (Нива, при этом, была утоплена по стекла дверей) и 10 мужиков. Ночь прошла очень романтично, больше всех веселились жабы... А еще там ездили гаишники и искали пропавший на той же дороге Камаз. (&lt;a href="http://bash.im/quote/418165"&gt;Источник&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;</summary><category term="trip"></category><category term="car"></category></entry></feed>
+&lt;p&gt;&lt;em&gt;Lisena: 27.04.2012 года была коварно заведена навигатором на эту же дорогу. Ехала на ВАЗ 2110 из Санкт-Петербурга в Кириши Л.О., навигатор настойчиво рекомендовал свернуть в Любани, после повората на Любани через 9 км дорога внезапно кончилась, началась грунтовка довольно таки не плохая. Проехав по ней 20-25 км в глухом лесу с мигрирующими жабами и парой брошенных машин на обочине, я вдруг оказалась в болоте по самые двери. Связи в этом чудо-лесу нет!!! В моем спасении было задействовано: Нисан, Уазик, Газель и Нива (Нива, при этом, была утоплена по стекла дверей) и 10 мужиков. Ночь прошла очень романтично, больше всех веселились жабы... А еще там ездили гаишники и искали пропавший на той же дороге Камаз. (&lt;a href="http://bash.im/quote/418165"&gt;Источник&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;</summary><category term="trip"></category><category term="car"></category></entry><entry><title>MYSQL: create table from another clever way</title><link href="/mysql_create_table_from_another_clever_way.html" rel="alternate"></link><updated>2012-07-24T07:00:00+02:00</updated><author><name>znotdead</name></author><id>tag:,2012-07-24:mysql_create_table_from_another_clever_way.html</id><summary type="html">&lt;h3&gt;create table from another clever way&lt;/h3&gt;
+&lt;p&gt;If you need create table on basis of another you do not need to search types and so on.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;CREATE&lt;/span&gt; &lt;span class="k"&gt;TABLE&lt;/span&gt; &lt;span class="nf"&gt;name_birthday_backup&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;KEY&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;birthday&lt;/span&gt;
+    &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;users&lt;/span&gt;
+    &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;name&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="k"&gt;not&lt;/span&gt; &lt;span class="no"&gt;null&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;birthday&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="no"&gt;null&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Request above creates table with names and birthdays for users who specified their names and not specified their birthday with index on name. Types of columns will be the same.&lt;/p&gt;</summary><category term="Mysql"></category></entry><entry><title>PYTHON: mimetypes</title><link href="/mimetypes.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-07-04:mimetypes.html</id><summary type="html">&lt;h3&gt;mimetypes&lt;/h3&gt;
+&lt;p&gt;If your linux setup in files &lt;code&gt;python -c 'import mimetypes; print mimetypes.knownfiles'&lt;/code&gt; doesn't have xlsx, for example, than on download of file in opera it will change it to zip or anything else.&lt;/p&gt;
+&lt;p&gt;So if browser doesn't recognize file extension, than mimetype and encoding are &lt;code&gt;None&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;mimetypes&lt;/span&gt;
+&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mimetypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;guess_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;filename.xlsx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Mimetype looks for type in files:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mimetypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;knownfiles&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;/etc/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/etc/httpd/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/etc/httpd/conf/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/etc/apache/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/etc/apache2/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/usr/local/etc/httpd/conf/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/usr/local/lib/netscape/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/usr/local/etc/httpd/conf/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;/usr/local/etc/mime.types&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;If we add &lt;code&gt;'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet xlsx'&lt;/code&gt;  in one of this files than&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;mimetypes&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;guess_type&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;filename.xlsx&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;application/vnd.openxmlformats-officedocument.spreadsheetml.sheet&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and we can set correct header to response to browser understand.&lt;/p&gt;</summary><category term="Python"></category></entry><entry><title>LINUX: ps displays UID numeric</title><link href="/linux_ps_displays_uid_numeric.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-06-25:linux_ps_displays_uid_numeric.html</id><summary type="html">&lt;h3&gt;ps displays UID numeric&lt;/h3&gt;
+&lt;p&gt;By default ps displays &lt;code&gt;$UID&lt;/code&gt; &lt;code&gt;$GUID&lt;/code&gt; as names (words) but when you wants to select process by user with certain &lt;code&gt;$UID&lt;/code&gt; you should use n option i.e. &lt;code&gt;ps auxww&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;daemon&lt;/span&gt;    &lt;span class="mi"&gt;1048&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;16784&lt;/span&gt;   &lt;span class="mi"&gt;376&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;atd&lt;/span&gt;
+&lt;span class="n"&gt;root&lt;/span&gt;      &lt;span class="mi"&gt;1049&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;18984&lt;/span&gt;  &lt;span class="mi"&gt;1028&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;cron&lt;/span&gt;
+&lt;span class="mi"&gt;114&lt;/span&gt;       &lt;span class="mi"&gt;1253&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;48784&lt;/span&gt;  &lt;span class="mi"&gt;1124&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;exim4&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;q30m&lt;/span&gt;
+&lt;span class="mi"&gt;1000&lt;/span&gt;      &lt;span class="mi"&gt;2206&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.6&lt;/span&gt; &lt;span class="mi"&gt;630752&lt;/span&gt; &lt;span class="mi"&gt;26416&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Sl&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="n"&gt;nautilus&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;With &lt;code&gt;n&lt;/code&gt; option &lt;code&gt;ps auxwwn&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Output:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;      &lt;span class="mi"&gt;1&lt;/span&gt;  &lt;span class="mi"&gt;1048&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;16784&lt;/span&gt;   &lt;span class="mi"&gt;376&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;atd&lt;/span&gt;
+       &lt;span class="mi"&gt;0&lt;/span&gt;  &lt;span class="mi"&gt;1049&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;18984&lt;/span&gt;  &lt;span class="mi"&gt;1028&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="n"&gt;cron&lt;/span&gt;
+     &lt;span class="mi"&gt;114&lt;/span&gt;  &lt;span class="mi"&gt;1253&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mi"&gt;48784&lt;/span&gt;  &lt;span class="mi"&gt;1124&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Ss&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;00&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;usr&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;sbin&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;exim4&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bd&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;q30m&lt;/span&gt;
+    &lt;span class="mi"&gt;1000&lt;/span&gt;  &lt;span class="mi"&gt;2206&lt;/span&gt;  &lt;span class="mf"&gt;0.0&lt;/span&gt;  &lt;span class="mf"&gt;0.6&lt;/span&gt; &lt;span class="mi"&gt;630752&lt;/span&gt; &lt;span class="mi"&gt;26416&lt;/span&gt; &lt;span class="o"&gt;?&lt;/span&gt;        &lt;span class="n"&gt;Sl&lt;/span&gt;   &lt;span class="mi"&gt;10&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;56&lt;/span&gt;   &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mo"&gt;01&lt;/span&gt; &lt;span class="n"&gt;nautilus&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;n&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>LINUX: apply diff patch</title><link href="/linux_apply_diff_patch.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-06-22:linux_apply_diff_patch.html</id><summary type="html">&lt;h3&gt;apply diff patch&lt;/h3&gt;
+&lt;p&gt;If you have diff and wants to apply it than:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;patch&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;p0&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="n"&gt;fix&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;diff&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>DJANGO: query as sql</title><link href="/django_query_as_sql.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-06-07:django_query_as_sql.html</id><summary type="html">&lt;h3&gt;query as sql&lt;/h3&gt;
+&lt;p&gt;To view a query as sql in shell&lt;br /&gt;
+in versions before multiple db:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;as_sql&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;query&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get_compiler&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="k"&gt;default&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;).&lt;/span&gt;&lt;span class="n"&gt;as_sql&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Django"></category></entry><entry><title>MYSQL: InnoDB and Django transactions</title><link href="/mysql_innodb_and_django_transactions.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-06-07:mysql_innodb_and_django_transactions.html</id><summary type="html">&lt;h3&gt;InnoDB and Django transactions&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Always use InnoDB &lt;code&gt;my.cnf&lt;/code&gt;:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;[mysqld]&lt;/span&gt;
+&lt;span class="na"&gt;default-storage-engine&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;InnoDB&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;InnoDB for session:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;SET&lt;/span&gt; &lt;span class="n"&gt;storage_engine&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;INNODB&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;ol&gt;
+&lt;li&gt;InnoDB per table:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;CREATE&lt;/span&gt; &lt;span class="n"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;employee&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="n"&gt;INT&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="n"&gt;ENGINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;InnoDB&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;ALTER&lt;/span&gt; &lt;span class="n"&gt;TABLE&lt;/span&gt; &lt;span class="n"&gt;employee&lt;/span&gt; &lt;span class="n"&gt;ENGINE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;InnoDB&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Also it is important to change isolation level. Because with REPEATABLE READ if the first read yield no result, any subsequent read, as it must yield the same result, won't yield anything too.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;my.cnf&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# Set the default transaction isolation level.&lt;/span&gt;
+&lt;span class="n"&gt;transaction&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;isolation&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;READ&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;COMMITTED&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;strong&gt;Django&lt;/strong&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;DATABASE_OPTIONS&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;init_command&amp;quot;&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;quot;SET storage_engine=INNODB, SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Mysql"></category><category term="Django"></category></entry><entry><title>DJANGO: new LOGGING settings</title><link href="/new_logging_settings.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-04-26:new_logging_settings.html</id><summary type="html">&lt;h3&gt;new LOGGING settings&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;LOG_LEVEL&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;DEBUG&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;INFO&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;FORMAT&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;[&lt;/span&gt;&lt;span class="si"&gt;%(asctime)s&lt;/span&gt;&lt;span class="s"&gt;] [&lt;/span&gt;&lt;span class="si"&gt;%(levelname)s&lt;/span&gt;&lt;span class="s"&gt;] [PID: &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="nb"&gt;str&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;getpid&lt;/span&gt;&lt;span class="p"&gt;())&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;] [&lt;/span&gt;&lt;span class="si"&gt;%(name)s&lt;/span&gt;&lt;span class="s"&gt;]:  &lt;/span&gt;&lt;span class="si"&gt;%(message)s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;
+
+&lt;span class="n"&gt;LOG_FILE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOG_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;debug.log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;ERR_FILE&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOG_DIR&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;error.log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;exists&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOG_DIR&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="k"&gt;try&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="n"&gt;os&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;mkdir&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;LOG_DIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="k"&gt;except&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+        &lt;span class="k"&gt;raise&lt;/span&gt; &lt;span class="ne"&gt;Exception&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;CAN NOT CREATE LOG DIR: &lt;/span&gt;&lt;span class="si"&gt;%s&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="n"&gt;LOG_DIR&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;LOGGING&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;version&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;disable_existing_loggers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;formatters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;verbose&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;FORMAT&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;format&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;&lt;/span&gt;&lt;span class="si"&gt;%(levelname)s&lt;/span&gt;&lt;span class="s"&gt; &lt;/span&gt;&lt;span class="si"&gt;%(message)s&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;require_debug_false&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;()&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;django.utils.log.RequireDebugFalse&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;handlers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;null&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;django.utils.log.NullHandler&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;console&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;DEBUG&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;logging.StreamHandler&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;formatter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;simple&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;mail_admins&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;filters&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;require_debug_false&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;django.utils.log.AdminEmailHandler&amp;#39;&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;LOG_LEVEL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;formatter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;verbose&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;log_handlers.TimedRotatingFileHandlerSafe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;filename&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;LOG_FILE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;when&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;LOG_INTERVAL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;error&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;formatter&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;verbose&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;class&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;log_handlers.TimedRotatingFileHandlerSafe&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;filename&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;ERR_FILE&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;when&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;LOG_INTERVAL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;}&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;loggers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;handlers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;null&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;propagate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;INFO&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;django.request&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;handlers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;mail_admins&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;error&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;ERROR&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+            &lt;span class="s"&gt;&amp;#39;propagate&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="bp"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+        &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+    &lt;span class="s"&gt;&amp;#39;root&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;handlers&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;log&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;error&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,],&lt;/span&gt;
+        &lt;span class="s"&gt;&amp;#39;level&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;LOG_LEVEL&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+    &lt;span class="p"&gt;},&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Django"></category></entry><entry><title>MYSQL: delete duplicates and leave with minimal id</title><link href="/mysql_delete_duplicates_and_leave_with_minimal_id.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-03-22:mysql_delete_duplicates_and_leave_with_minimal_id.html</id><summary type="html">&lt;h3&gt;delete duplicates and leave with minimal id&lt;/h3&gt;
+&lt;p&gt;SQL query to delete all duplicates.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;DELETE&lt;/span&gt;  &lt;span class="n"&gt;i&lt;/span&gt;  &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;
+    &lt;span class="k"&gt;JOIN&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;SELECT&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nf"&gt;min&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="n"&gt;minid&lt;/span&gt;
+                &lt;span class="k"&gt;FROM&lt;/span&gt; &lt;span class="n"&gt;stats&lt;/span&gt; &lt;span class="k"&gt;GROUP&lt;/span&gt; &lt;span class="k"&gt;BY&lt;/span&gt; &lt;span class="n"&gt;custom_id&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;code&lt;/span&gt;
+                &lt;span class="k"&gt;HAVING&lt;/span&gt; &lt;span class="nf"&gt;COUNT&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="k"&gt;AS&lt;/span&gt; &lt;span class="n"&gt;dups&lt;/span&gt;
+    &lt;span class="k"&gt;ON&lt;/span&gt; &lt;span class="n"&gt;dups&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custom_id&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;custom_id&lt;/span&gt; &lt;span class="k"&gt;AND&lt;/span&gt; &lt;span class="n"&gt;dups&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;code&lt;/span&gt;
+    &lt;span class="k"&gt;WHERE&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id&lt;/span&gt; &lt;span class="o"&gt;&amp;lt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;dups&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;minid&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Mysql"></category></entry><entry><title>DB: Overview NoSQL</title><link href="/db_overview_nosql.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-03-22:db_overview_nosql.html</id><summary type="html">&lt;h3&gt;Overview NoSQL&lt;/h3&gt;
+&lt;p&gt;I need to save smth. about 6 milliards of keys.&lt;br /&gt;
+So MySQL will hang on IO.&lt;br /&gt;
+we need more efficient.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;REQUIREMENTS&lt;/strong&gt;:&lt;br /&gt;
+1. persistancce&lt;br /&gt;
+2. fast&lt;br /&gt;
+3. sharding&lt;br /&gt;
+4. replication&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;REDIS&lt;/strong&gt;:&lt;br /&gt;
+redis 2.2.0&lt;br /&gt;
++ it has sets&lt;br /&gt;
++ convinient API&lt;br /&gt;
+- all keys in memory&lt;br /&gt;
+- on current versions (2.2.0) virtual memory SUCKS. Redis can eat all memory on your server because limits doesn't work. Wait for 2.4.0&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;MONGO&lt;/strong&gt;:&lt;br /&gt;
+MongoDB shell version: 1.8.0&lt;br /&gt;
++ sets&lt;br /&gt;
+- you cant limit memory usage. It also eats all available memory and become swapping killing your server&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fast loading because data saves in memory dumps&lt;/li&gt;
+&lt;li&gt;possible update sets and date in one request&lt;/li&gt;
+&lt;li&gt;much memory usage 5 millions of data {"_id": ObjectId(id), 'date': int(time.time()), 'k':[1111,2222,33333,4444,5555,6666,77777]} # timestamp is unix time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;1000000:&lt;br /&gt;
++ 3 minutes to fill&lt;br /&gt;
+-  0.5GB&lt;/p&gt;
+&lt;p&gt;1 000 000 entries ({"_id": ObjectId(id), 'date': int(time.time()), 'k':[1111,2222,33333,4444,5555,6666,77777]} )&lt;br /&gt;
+ db.stats()&lt;br /&gt;
+{&lt;br /&gt;
+        "db" : "linksss",&lt;br /&gt;
+        "collections" : 3,&lt;br /&gt;
+        "objects" : 1000004,&lt;br /&gt;
+        "avgObjSize" : 91.999836000656,&lt;br /&gt;
+        "dataSize" : 92000204,&lt;br /&gt;
+        "storageSize" : 121869056,&lt;br /&gt;
+        "numExtents" : 16,&lt;br /&gt;
+        "indexes" : 1,&lt;br /&gt;
+        "indexSize" : 41598976,&lt;br /&gt;
+        "fileSize" : 520093696,&lt;br /&gt;
+        "ok" : 1&lt;br /&gt;
+}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;RIAK&lt;/strong&gt;:&lt;br /&gt;
+riak_0.14.0-1_i386.deb&lt;br /&gt;
++ use python as usual&lt;br /&gt;
+- it takes too much time to fill 1000000 entries like in mongo.&lt;br /&gt;
+- during script run console with python hangs&lt;br /&gt;
+- too much disk space (on 650Mb I stopped script. this is not that thing that we want.)&lt;br /&gt;
+- too much CPU on filling (practically all time 100%)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;COUCHDB&lt;/strong&gt;:&lt;br /&gt;
++ good synax (comparing to HBase)&lt;br /&gt;
+- disk expensive&lt;br /&gt;
+- slow write&lt;br /&gt;
+- hard disk usage&lt;br /&gt;
+- no read caches&lt;br /&gt;
+data like {'date': int(time()), 'k': [144422, 22212, 323444, 66, 12345, 3456, 23444]}&lt;br /&gt;
+db.info()&lt;br /&gt;
+{'committed_update_seq': 15731,&lt;br /&gt;
+ 'compact_running': False,&lt;br /&gt;
+ 'db_name': 'test',&lt;br /&gt;
+ 'disk_format_version': 5,&lt;br /&gt;
+ 'disk_size': 85602402,&lt;br /&gt;
+ 'doc_count': 15731,&lt;br /&gt;
+ 'doc_del_count': 0,&lt;br /&gt;
+ 'instance_start_time': '1301644812061465',&lt;br /&gt;
+ 'purge_seq': 0,&lt;br /&gt;
+ 'update_seq': 15731}&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HBASE&lt;/strong&gt;:&lt;br /&gt;
+hbase 0.90.1, r1070708&lt;br /&gt;
++ small disc usage&lt;br /&gt;
++ 2 billions entries in one table (by hbase spec)&lt;br /&gt;
+- average CPU usage (50-70% on my U7300  @ 1.30GHz x2) ( most of all python)&lt;br /&gt;
+- thrift with not beautiful syntax&lt;br /&gt;
+- sometimes java exceptions with connection loose&lt;br /&gt;
+1 million of entries takes:&lt;br /&gt;
+- 248 Mb on HD&lt;br /&gt;
+- 16 minutes for filling&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;describe 'linkss'&lt;br /&gt;
+DESCRIPTION                                                                                                   ENABLED&lt;br /&gt;
+ {NAME =&amp;gt; 'linkss', FAMILIES =&amp;gt; [{NAME =&amp;gt; 'date', BLOOMFILTER =&amp;gt; 'NONE', REPLICATION_SCOPE =&amp;gt; '0', COMPRESSIO true&lt;br /&gt;
+ N =&amp;gt; 'NONE', VERSIONS =&amp;gt; '3', TTL =&amp;gt; '-1', BLOCKSIZE =&amp;gt; '65536', IN_MEMORY =&amp;gt; 'false', BLOCKCACHE =&amp;gt; 'false'&lt;br /&gt;
+ }, {NAME =&amp;gt; 'k', BLOOMFILTER =&amp;gt; 'NONE', REPLICATION_SCOPE =&amp;gt; '0', COMPRESSION =&amp;gt; 'NONE', VERSIONS =&amp;gt; '10', T&lt;br /&gt;
+ TL =&amp;gt; '-1', BLOCKSIZE =&amp;gt; '65536', IN_MEMORY =&amp;gt; 'false', BLOCKCACHE =&amp;gt; 'false'}]}&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;MEMBASE&lt;/strong&gt;:&lt;br /&gt;
+membase-server  1.6.5.3&lt;br /&gt;
++ wonderful admin UI&lt;br /&gt;
++ fast enough as store info in memory and sync to disk&lt;br /&gt;
++ caching&lt;br /&gt;
++ it is possible to limit RAM usage for server or DB separately and it's works!&lt;br /&gt;
++ memcached clients&lt;br /&gt;
++ clustering from the box&lt;br /&gt;
+- no manual config edit via files&lt;br /&gt;
+- not so fast as mongo, bigger IO than mongo. but better for systems when loading pages critical&lt;br /&gt;
+- all keys in memory ( may be many Gb)&lt;br /&gt;
+- 120b additionally for each key&lt;br /&gt;
+- sqlite3 as persistent storage&lt;/p&gt;
+&lt;p&gt;1 000 000 entries:&lt;br /&gt;
+-6 minutes&lt;br /&gt;
++122Mb disk&lt;br /&gt;
+163Mb memory&lt;/p&gt;
+&lt;p&gt;1 000 000 entries read (100% cache loose because of low limit of memory):&lt;br /&gt;
+0:08:56.130380&lt;br /&gt;
++ low hdd usage&lt;br /&gt;
+- CPU 70%&lt;/p&gt;
+&lt;p&gt;1 000 000 entries read in RANDOM(100% cache loose because of low limit of memory)&lt;br /&gt;
+0:09:07.694571&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;CASSANDRA&lt;/strong&gt;:&lt;br /&gt;
+apache-cassandra-0.7.5&lt;br /&gt;
++ low hdd usage&lt;br /&gt;
+- high hardware needs:&lt;br /&gt;
+    not less than 8 (or16) Gb RAMfor dedicated server. 32Gb better per node.&lt;br /&gt;
+    Cassandra is highly concurrent  - 8 cores preferred&lt;br /&gt;
+    2 disks, one to keep your CommitLogDirectory on, the other to use in DataFileDirectories&lt;/p&gt;
+&lt;p&gt;1 000 000 entries:&lt;br /&gt;
+-1:16:45.464607&lt;br /&gt;
+-1.4Gb java process&lt;br /&gt;
+-362M    /tmp/cass/commitlog&lt;br /&gt;
+-825M    /tmp/cass/data&lt;br /&gt;
+362M    /tmp/cass/commitlog&lt;br /&gt;
+376M    /tmp/cass/data&lt;/p&gt;
+&lt;p&gt;insert user and history in one request&lt;br /&gt;
+265M    /tmp/cass/commitlog&lt;br /&gt;
+825M    /tmp/cass/data&lt;br /&gt;
+0:24:59.894963&lt;/p&gt;
+&lt;p&gt;insert only history:&lt;br /&gt;
+0:13:34.955025&lt;br /&gt;
+136M    /tmp/cass/commitlog&lt;br /&gt;
+336M    /tmp/cass/data&lt;/p&gt;
+&lt;p&gt;1 000 000 entries READ:&lt;br /&gt;
+-0:32:25.457211&lt;br /&gt;
+-40-50% CPU on read ( form than 54% java, 40% -python and 6 other system)&lt;br /&gt;
+-for first time high hdd usage(11%) (first 50k) than practically no&lt;/p&gt;
+&lt;p&gt;1 000 000 entries RANDOM READ:&lt;br /&gt;
+0:24:53.761907&lt;/p&gt;
+&lt;p&gt;5 000 000 entries with time after each 1m:&lt;br /&gt;
+1m: 0:13:25.326189&lt;br /&gt;
+2m: 0:27:07.851321 (0:13:42)&lt;br /&gt;
+3m: 0:40:31.404977 (0:13:24)&lt;br /&gt;
+4m: 0:54:26.248025 (0:13:55)&lt;br /&gt;
+5m: 1:08:19.861676 (0:13:53)&lt;br /&gt;
+166M    /tmp/cass/commitlog&lt;br /&gt;
+1.5G    /tmp/cass/data&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;HYPERTABLE&lt;/strong&gt;:&lt;br /&gt;
+0.9.5.0.pre4 (hypertable)&lt;br /&gt;
+- high HDD usage (on cluster may be it can be descreased by using HDFS)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;KYOTO&lt;/strong&gt;&lt;br /&gt;
++ very fast&lt;br /&gt;
+- no sharding from the box ( there are LightCloud scripts for tokyo cabinet )&lt;/p&gt;
+&lt;p&gt;1 000 000:&lt;br /&gt;
+0:00:09.599489&lt;br /&gt;
+75M&lt;br /&gt;
+5 000 000:&lt;br /&gt;
+0:30:57.988294&lt;br /&gt;
+350M&lt;br /&gt;
+from 6 to 7 millions:&lt;br /&gt;
+0:19:00.845744&lt;/p&gt;
+&lt;p&gt;We select Cassandra for future needs and it's good to many writes. But I think it will be enough Mongo.&lt;/p&gt;</summary><category term="NoSQL"></category></entry><entry><title>RABBITMQ: simple create user commands</title><link href="/rabbitmq_simple_create_user_commands.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-02-09:rabbitmq_simple_create_user_commands.html</id><summary type="html">&lt;h3&gt;simple create user commands&lt;/h3&gt;
+&lt;p&gt;to add host and user with all permissions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rabbitmqctl add_vhost /host
+rabbitmqctl add_user username password
+rabbitmqctl set_permissions -p /host username &lt;span class="s2"&gt;&amp;quot;.*&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.*&amp;quot;&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;.*&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="RabbitMQ"></category></entry><entry><title>LINUX: EnvironmentError: mysql_config not found</title><link href="/linux_environmenterror_mysql_config_not_found.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-02-06:linux_environmenterror_mysql_config_not_found.html</id><summary type="html">&lt;h3&gt;EnvironmentError: mysql_config not found&lt;/h3&gt;
+&lt;p&gt;when trying to install MySQL-python there is error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# pip install MySQL-python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;EnvironmentError&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;mysql_config&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;found&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To fix it you need to install libmysqlclient15-dev:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# apt-get install libmysqlclient15-dev&lt;/span&gt;
+&lt;span class="c"&gt;# pip install MySQL-python&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>SVN+LINUX: auth on svn and GNOME keyring</title><link href="/svn_linux_auth_on_svn_and_gnome_keyring.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-02-06:svn_linux_auth_on_svn_and_gnome_keyring.html</id><summary type="html">&lt;h3&gt;auth on svn and GNOME keyring&lt;/h3&gt;
+&lt;p&gt;when trying to get repository from svn there is error:&lt;br /&gt;
+Password for '(null)' GNOME keyring:&lt;br /&gt;
+...&lt;/p&gt;
+&lt;p&gt;Solution:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;rm&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;gnome2&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;keyrings&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;login&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;keyring&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="SVN"></category><category term="Linux"></category></entry><entry><title>APACHE: favicon.ico</title><link href="/apache_favicon_ico.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2012-01-26:apache_favicon_ico.html</id><summary type="html">&lt;h3&gt;favicon.ico&lt;/h3&gt;
+&lt;p&gt;In some cases there is request to http://hostname/favicon.ico&lt;br /&gt;
+but django project doesn't have url to this, so on deployment it will be better to make an alias in apache config:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Alias&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;favicon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ico&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;var&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;www&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;media&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;site&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;img&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;favicon&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ico&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Apache"></category></entry><entry><title>DJANGO: do not dissplay any links in admin change_list</title><link href="/django_do_not_dissplay_any_links_in_admin_change_list.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-12-23:django_do_not_dissplay_any_links_in_admin_change_list.html</id><summary type="html">&lt;h3&gt;do not dissplay any links in admin change_list&lt;/h3&gt;
+&lt;p&gt;There is example where in change list I want to display coutry and city for example but do not show links to edit it.&lt;br /&gt;
+This will not work:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GeoAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;list_display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;country&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;city&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
+    &lt;span class="n"&gt;list_display_links&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[]&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;because there is check on empty list in django.&lt;br /&gt;
+And this will work:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="nc"&gt;GeoAdmin&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;admin&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ModelAdmin&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;list_display&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;country&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;city&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
+
+    &lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+        &lt;span class="nb"&gt;super&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;GeoAdmin&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;__init__&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;args&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="o"&gt;**&lt;/span&gt;&lt;span class="n"&gt;kwargs&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+        &lt;span class="bp"&gt;self&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;list_display_links&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;None&lt;/span&gt;&lt;span class="p"&gt;,)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Django"></category></entry><entry><title>PYTHON: csv with Cyrillic</title><link href="/python_csv_with_cyrillic-ru.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-12-23:python_csv_with_cyrillic-ru.html</id><summary type="html">&lt;h3&gt;csv with Cyrillic&lt;/h3&gt;
+&lt;p&gt;When I need to generate a csv with Russian comments for correct display in Excel (OpenOffice suggest you encoding) you need to convert all to cp1251 =(&lt;/p&gt;
+&lt;p&gt;Also You need to remember that first field should NOT to be ID because of &lt;a href="http://support.microsoft.com/kb/323626/"&gt;MS Office bug&lt;/a&gt;&lt;br /&gt;
+So in Django whet I return a csv file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;HttpResponse&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;mimetype&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;text/csv&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;Content-Disposition&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;&amp;#39;attachment; filename=filename.csv&amp;#39;&lt;/span&gt;
+&lt;span class="n"&gt;w&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writer&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;delimiter&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;,&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;quotechar&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;&amp;quot;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;quoting&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="n"&gt;csv&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;QUOTE_MINIMAL&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="c"&gt;# first field should NOT to be ID because of [MS Office bug](http://support.microsoft.com/kb/323626/)&lt;/span&gt;
+&lt;span class="c"&gt;# MS Excel doesn&amp;#39;t understand UTF-8 for csv. So... cp1251 =(&lt;/span&gt;
+
+&lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writerow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cp1251&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt;
+                         &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s"&gt;u&amp;#39;Номер&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s"&gt;u&amp;#39;Примечание&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;]))&lt;/span&gt;
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;item&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;queryset&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;
+    &lt;span class="n"&gt;row&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;number&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="nb"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;item&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;comment&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+    &lt;span class="n"&gt;w&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;writerow&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="nb"&gt;map&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;lambda&lt;/span&gt; &lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nb"&gt;unicode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;encode&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s"&gt;&amp;#39;cp1251&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="n"&gt;row&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="n"&gt;response&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category></entry><entry><title>DJANGO: dump and load data</title><link href="/django_dump_and_load_data.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-12-16:django_dump_and_load_data.html</id><summary type="html">&lt;h3&gt;dump and load data&lt;/h3&gt;
+&lt;p&gt;If you want to get json from DB for certain model there are 2 usefull commands:&lt;br /&gt;
+Example is better to show.&lt;br /&gt;
+To get data from db:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./manage.py dumpdata global_settings.AutoLetter &amp;gt;  ./tools/initial_data/autoletter.json
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;To load data to db:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;./manage.py loaddata ./tools/initial_data/autoletter.json
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Django"></category></entry><entry><title>PYTHON: _imagingft C module is not installed</title><link href="/python_imagingft_c_module_is_not_installed.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-12-13:python_imagingft_c_module_is_not_installed.html</id><summary type="html">&lt;h3&gt;_imagingft C module is not installed&lt;/h3&gt;
+&lt;p&gt;after installing PIL 1.1.7 and using django-simple-captha there is error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;ImportError&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="n"&gt;The&lt;/span&gt; &lt;span class="n"&gt;_imagingft&lt;/span&gt; &lt;span class="n"&gt;C&lt;/span&gt; &lt;span class="n"&gt;module&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;not&lt;/span&gt; &lt;span class="n"&gt;installed&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The problem was that you need to install dev package for FreeType&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;apt&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="n"&gt;libfreetype6&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;dev&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;After that re-install PIL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;pip&lt;/span&gt; &lt;span class="n"&gt;install&lt;/span&gt; &lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;upgrade&lt;/span&gt; &lt;span class="n"&gt;pil&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category></entry><entry><title>DJANGO: highcharts in admin</title><link href="/django_highcharts_in_admin.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-11-22:django_highcharts_in_admin.html</id><summary type="html">&lt;h3&gt;highcharts in admin&lt;/h3&gt;
+&lt;p&gt;Highcharts require jQuery so in your custom template you need 2 lines ( not only charts) because by default in admin there is a jquery by accessible by &lt;code&gt;django.jQuery&lt;/code&gt; and &lt;code&gt;var $ = django.jQuery;&lt;/code&gt; won't help you.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ MEDIA_URL }}site/js/jquery-1.4.4.min.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;span class="nt"&gt;&amp;lt;script&lt;/span&gt; &lt;span class="na"&gt;type=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;text/javascript&amp;quot;&lt;/span&gt; &lt;span class="na"&gt;src=&lt;/span&gt;&lt;span class="s"&gt;&amp;quot;{{ MEDIA_URL }}site/js/highcharts.js&amp;quot;&lt;/span&gt;&lt;span class="nt"&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Django"></category></entry><entry><title>DJANGO: remove empty value in select</title><link href="/django_remove_empty_value_in_select.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-11-11:django_remove_empty_value_in_select.html</id><summary type="html">&lt;h3&gt;remove empty value in select&lt;/h3&gt;
+&lt;p&gt;If you have choices field and in admin you don't want to show empty (field always is required) than in your model you should specify &lt;code&gt;blank=False&lt;/code&gt; and &lt;code&gt;default=&amp;lt;value&amp;gt;&lt;/code&gt;. In this case in admin you get choice field without empty value.&lt;/p&gt;</summary><category term="Django"></category></entry><entry><title>LINUX: redis-cli remove keys by wildcard</title><link href="/linux_redis_cli_remove_keys_by_wildcard.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-11-10:linux_redis_cli_remove_keys_by_wildcard.html</id><summary type="html">&lt;h3&gt;redis-cli remove keys by wildcard&lt;/h3&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt;1
+2&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/bash&lt;/span&gt;
+redis-cli keys &lt;span class="nv"&gt;$1&lt;/span&gt; | awk &lt;span class="s1"&gt;&amp;#39;{print $1}&amp;#39;&lt;/span&gt; | xargs --interactive redis-cli del &lt;span class="o"&gt;{}&lt;/span&gt; &lt;span class="se"&gt;\;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+
+&lt;p&gt;How to use:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;redis&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;del&lt;/span&gt; &lt;span class="n"&gt;pattern&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;&lt;a href="http://www.rustyrazorblade.com/2011/04/redis-wildcard-delete/"&gt;Source&lt;/a&gt;&lt;/p&gt;</summary><category term="Linux"></category><category term="Redis"></category></entry><entry><title>LINUX: fuse: bad mount point /mnt/foo: Transport endpoint is not connected</title><link href="/linux_fuse_bad_mount_point_mnt_foo_transport_endpoint_is_not_connected.html" rel="alternate"></link><updated>2011-11-05T09:05:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-11-05:linux_fuse_bad_mount_point_mnt_foo_transport_endpoint_is_not_connected.html</id><summary type="html">&lt;h3&gt;fuse: bad mount point /mnt/foo: Transport endpoint is not connected&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;kill sshfs&lt;/li&gt;
+&lt;li&gt;kill all that uses /mnt/foo (&lt;code&gt;lsof | grep foo&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;umount -l /mnt/foo&lt;/li&gt;
+&lt;li&gt;mount sshfs again&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="Linux"></category></entry><entry><title>LINUX: exim4 paniclog</title><link href="/linux_exim4_paniclog.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-11-05:linux_exim4_paniclog.html</id><summary type="html">&lt;h3&gt;exim4 paniclog&lt;/h3&gt;
+&lt;p&gt;After reconfiguration exim there is error:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# dpkg-reconfigure exim4-config&lt;/span&gt;
+Stopping MTA &lt;span class="k"&gt;for &lt;/span&gt;restart: exim4_listener.
+Restarting MTA: exim4.
+ALERT: exim paniclog /var/log/exim4/paniclog has non-zero size, mail system possibly broken ... failed!
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;On ports in seems to me nothing strage using 25&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="cp"&gt;# netstat -napt|grep 25&lt;/span&gt;
+&lt;span class="n"&gt;tcp&lt;/span&gt;        &lt;span class="mi"&gt;0&lt;/span&gt;      &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="mf"&gt;127.0.0.1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;            &lt;span class="mf"&gt;0.0.0.0&lt;/span&gt;&lt;span class="o"&gt;:*&lt;/span&gt;               &lt;span class="n"&gt;LISTEN&lt;/span&gt;      &lt;span class="mi"&gt;14886&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;exim4&lt;/span&gt;
+&lt;span class="n"&gt;tcp6&lt;/span&gt;       &lt;span class="mi"&gt;0&lt;/span&gt;      &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;25&lt;/span&gt;                  &lt;span class="o"&gt;:::*&lt;/span&gt;                    &lt;span class="n"&gt;LISTEN&lt;/span&gt;      &lt;span class="mi"&gt;14886&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;exim4&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;So solution (may be temporary):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# rm /var/log/exim4/paniclog&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>LINUX: change file encoding</title><link href="/linux_change_file_encoding.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-10-13:linux_change_file_encoding.html</id><summary type="html">&lt;h3&gt;change file encoding&lt;/h3&gt;
+&lt;p&gt;To encode files from russian KOI8-R for example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;enca&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;L&lt;/span&gt; &lt;span class="n"&gt;russian&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="n"&gt;UTF&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;8&lt;/span&gt; &lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="o"&gt;/*&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry><entry><title>LINUX: ssh config</title><link href="/linux_ssh_config.html" rel="alternate"></link><updated>2014-11-24T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:,2011-10-12:linux_ssh_config.html</id><summary type="html">&lt;h3&gt;ssh config&lt;/h3&gt;
+&lt;p&gt;You can make alias for ssh access to your repository for example. Place this line in &lt;code&gt;~/.bash_aliases&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;alias&lt;/span&gt; &lt;span class="n"&gt;ssh_repo&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="err"&gt;@&lt;/span&gt;&lt;span class="mf"&gt;192.168.1.10&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;home&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;znotdead&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;&lt;span class="err"&gt;&amp;#39;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;But if you would like to make hg push you can't do it beautifully. For that all you need that is make config file in &lt;code&gt;~/.ssh&lt;/code&gt;&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;touch&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
+&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;vim&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;config&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Place next lines in your file:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;Host&lt;/span&gt; &lt;span class="n"&gt;hg&lt;/span&gt;
+     &lt;span class="n"&gt;IdentityFile&lt;/span&gt; &lt;span class="o"&gt;~/&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;ssh&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;repo&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;username&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;id_rsa&lt;/span&gt;
+     &lt;span class="n"&gt;HostName&lt;/span&gt; &lt;span class="mf"&gt;192.168.1.10&lt;/span&gt;
+     &lt;span class="n"&gt;User&lt;/span&gt; &lt;span class="n"&gt;username&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Here you are =). Now you can access to you repo by:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="err"&gt;$&lt;/span&gt; &lt;span class="n"&gt;ssh&lt;/span&gt; &lt;span class="n"&gt;hg&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;and from mercurial by URL:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nl"&gt;ssh:&lt;/span&gt;&lt;span class="c1"&gt;//username@hg/~/repo_folder&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Linux"></category></entry></feed>

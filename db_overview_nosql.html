@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en"
+>
+<head>
+    <title>DB: Overview NoSQL - Notes</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link href="/static/img/ico/logo.png" rel="icon">
+    <link rel="apple-touch-icon" href="/static/img/ico/logo.png">
+
+<link rel="canonical" href="/db_overview_nosql.html">
+
+        <meta name="author" content="znotdead" />
+        <meta name="keywords" content="NoSQL" />
+        <meta name="description" content="Overview NoSQL" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/monokai.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+        <link href="/static/css/main.css" rel="stylesheet">
+
+    <script src="/theme/js/jquery.min.js"></script>
+
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/theme/js/bootstrap.min.js"></script>
+
+    <!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+    <script src="/theme/js/respond.min.js"></script>
+
+            <script src="/static/js/jquery-latest.js"></script>
+            <script src="/static/js/jquery.tablesorter.min.js"></script>
+            <script src="/static/js/main.js"></script>
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+<img src="/static/img/ico/logo.png" width="50"/> Notes            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                        <a href="/category/car.html">
+                                <img src='/static/img/ico/car.png' width='50'>Car
+                        </a>
+                        </li>
+                        <li >
+                        <a href="/category/misc.html">
+                                <img src='/static/img/ico/misc.png' width='50'>Misc
+                        </a>
+                        </li>
+                        <li class="active">
+                        <a href="/category/programming.html">
+                                <img src='/static/img/ico/programming.png' width='50'>Programming
+                        </a>
+                        </li>
+                        <li >
+                        <a href="/category/recipes.html">
+                                <img src='/static/img/ico/recipes.png' width='50'>Recipes
+                        </a>
+                        </li>
+                        <li >
+                        <a href="/category/songs.html">
+                                <img src='/static/img/ico/songs.png' width='50'>Songs
+                        </a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/archives.html"><i class="fa fa-th-list"></i><span class="icon-label">Archives</span></a></li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/db_overview_nosql.html"
+                       rel="bookmark"
+                       title="Permalink to DB: Overview NoSQL">
+                        DB: Overview NoSQL
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2012-03-22T14:52:00+01:00"> Thu 22 March 2012</time>
+    </span>
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/nosql.html">NoSQL</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <h3>Overview NoSQL</h3>
+<p>I need to save smth. about 6 milliards of keys.<br />
+So MySQL will hang on IO.<br />
+we need more efficient.</p>
+<p><strong>REQUIREMENTS</strong>:<br />
+1. persistancce<br />
+2. fast<br />
+3. sharding<br />
+4. replication</p>
+<p><strong>REDIS</strong>:<br />
+redis 2.2.0<br />
++ it has sets<br />
++ convinient API<br />
+- all keys in memory<br />
+- on current versions (2.2.0) virtual memory SUCKS. Redis can eat all memory on your server because limits doesn't work. Wait for 2.4.0</p>
+<p><strong>MONGO</strong>:<br />
+MongoDB shell version: 1.8.0<br />
++ sets<br />
+- you cant limit memory usage. It also eats all available memory and become swapping killing your server</p>
+<ul>
+<li>fast loading because data saves in memory dumps</li>
+<li>possible update sets and date in one request</li>
+<li>much memory usage 5 millions of data {"_id": ObjectId(id), 'date': int(time.time()), 'k':[1111,2222,33333,4444,5555,6666,77777]} # timestamp is unix time.</li>
+</ul>
+<p>1000000:<br />
++ 3 minutes to fill<br />
+-  0.5GB</p>
+<p>1 000 000 entries ({"_id": ObjectId(id), 'date': int(time.time()), 'k':[1111,2222,33333,4444,5555,6666,77777]} )<br />
+ db.stats()<br />
+{<br />
+        "db" : "linksss",<br />
+        "collections" : 3,<br />
+        "objects" : 1000004,<br />
+        "avgObjSize" : 91.999836000656,<br />
+        "dataSize" : 92000204,<br />
+        "storageSize" : 121869056,<br />
+        "numExtents" : 16,<br />
+        "indexes" : 1,<br />
+        "indexSize" : 41598976,<br />
+        "fileSize" : 520093696,<br />
+        "ok" : 1<br />
+}</p>
+<p><strong>RIAK</strong>:<br />
+riak_0.14.0-1_i386.deb<br />
++ use python as usual<br />
+- it takes too much time to fill 1000000 entries like in mongo.<br />
+- during script run console with python hangs<br />
+- too much disk space (on 650Mb I stopped script. this is not that thing that we want.)<br />
+- too much CPU on filling (practically all time 100%)</p>
+<p><strong>COUCHDB</strong>:<br />
++ good synax (comparing to HBase)<br />
+- disk expensive<br />
+- slow write<br />
+- hard disk usage<br />
+- no read caches<br />
+data like {'date': int(time()), 'k': [144422, 22212, 323444, 66, 12345, 3456, 23444]}<br />
+db.info()<br />
+{'committed_update_seq': 15731,<br />
+ 'compact_running': False,<br />
+ 'db_name': 'test',<br />
+ 'disk_format_version': 5,<br />
+ 'disk_size': 85602402,<br />
+ 'doc_count': 15731,<br />
+ 'doc_del_count': 0,<br />
+ 'instance_start_time': '1301644812061465',<br />
+ 'purge_seq': 0,<br />
+ 'update_seq': 15731}</p>
+<p><strong>HBASE</strong>:<br />
+hbase 0.90.1, r1070708<br />
++ small disc usage<br />
++ 2 billions entries in one table (by hbase spec)<br />
+- average CPU usage (50-70% on my U7300  @ 1.30GHz x2) ( most of all python)<br />
+- thrift with not beautiful syntax<br />
+- sometimes java exceptions with connection loose<br />
+1 million of entries takes:<br />
+- 248 Mb on HD<br />
+- 16 minutes for filling</p>
+<blockquote>
+<p>describe 'linkss'<br />
+DESCRIPTION                                                                                                   ENABLED<br />
+ {NAME =&gt; 'linkss', FAMILIES =&gt; [{NAME =&gt; 'date', BLOOMFILTER =&gt; 'NONE', REPLICATION_SCOPE =&gt; '0', COMPRESSIO true<br />
+ N =&gt; 'NONE', VERSIONS =&gt; '3', TTL =&gt; '-1', BLOCKSIZE =&gt; '65536', IN_MEMORY =&gt; 'false', BLOCKCACHE =&gt; 'false'<br />
+ }, {NAME =&gt; 'k', BLOOMFILTER =&gt; 'NONE', REPLICATION_SCOPE =&gt; '0', COMPRESSION =&gt; 'NONE', VERSIONS =&gt; '10', T<br />
+ TL =&gt; '-1', BLOCKSIZE =&gt; '65536', IN_MEMORY =&gt; 'false', BLOCKCACHE =&gt; 'false'}]}</p>
+</blockquote>
+<p><strong>MEMBASE</strong>:<br />
+membase-server  1.6.5.3<br />
++ wonderful admin UI<br />
++ fast enough as store info in memory and sync to disk<br />
++ caching<br />
++ it is possible to limit RAM usage for server or DB separately and it's works!<br />
++ memcached clients<br />
++ clustering from the box<br />
+- no manual config edit via files<br />
+- not so fast as mongo, bigger IO than mongo. but better for systems when loading pages critical<br />
+- all keys in memory ( may be many Gb)<br />
+- 120b additionally for each key<br />
+- sqlite3 as persistent storage</p>
+<p>1 000 000 entries:<br />
+-6 minutes<br />
++122Mb disk<br />
+163Mb memory</p>
+<p>1 000 000 entries read (100% cache loose because of low limit of memory):<br />
+0:08:56.130380<br />
++ low hdd usage<br />
+- CPU 70%</p>
+<p>1 000 000 entries read in RANDOM(100% cache loose because of low limit of memory)<br />
+0:09:07.694571</p>
+<p><strong>CASSANDRA</strong>:<br />
+apache-cassandra-0.7.5<br />
++ low hdd usage<br />
+- high hardware needs:<br />
+    not less than 8 (or16) Gb RAMfor dedicated server. 32Gb better per node.<br />
+    Cassandra is highly concurrent  - 8 cores preferred<br />
+    2 disks, one to keep your CommitLogDirectory on, the other to use in DataFileDirectories</p>
+<p>1 000 000 entries:<br />
+-1:16:45.464607<br />
+-1.4Gb java process<br />
+-362M    /tmp/cass/commitlog<br />
+-825M    /tmp/cass/data<br />
+362M    /tmp/cass/commitlog<br />
+376M    /tmp/cass/data</p>
+<p>insert user and history in one request<br />
+265M    /tmp/cass/commitlog<br />
+825M    /tmp/cass/data<br />
+0:24:59.894963</p>
+<p>insert only history:<br />
+0:13:34.955025<br />
+136M    /tmp/cass/commitlog<br />
+336M    /tmp/cass/data</p>
+<p>1 000 000 entries READ:<br />
+-0:32:25.457211<br />
+-40-50% CPU on read ( form than 54% java, 40% -python and 6 other system)<br />
+-for first time high hdd usage(11%) (first 50k) than practically no</p>
+<p>1 000 000 entries RANDOM READ:<br />
+0:24:53.761907</p>
+<p>5 000 000 entries with time after each 1m:<br />
+1m: 0:13:25.326189<br />
+2m: 0:27:07.851321 (0:13:42)<br />
+3m: 0:40:31.404977 (0:13:24)<br />
+4m: 0:54:26.248025 (0:13:55)<br />
+5m: 1:08:19.861676 (0:13:53)<br />
+166M    /tmp/cass/commitlog<br />
+1.5G    /tmp/cass/data</p>
+<p><strong>HYPERTABLE</strong>:<br />
+0.9.5.0.pre4 (hypertable)<br />
+- high HDD usage (on cluster may be it can be descreased by using HDFS)</p>
+<p><strong>KYOTO</strong><br />
++ very fast<br />
+- no sharding from the box ( there are LightCloud scripts for tokyo cabinet )</p>
+<p>1 000 000:<br />
+0:00:09.599489<br />
+75M<br />
+5 000 000:<br />
+0:30:57.988294<br />
+350M<br />
+from 6 to 7 millions:<br />
+0:19:00.845744</p>
+<p>We select Cassandra for future needs and it's good to many writes. But I think it will be enough Mongo.</p>
+            </div>
+            <!-- /.entry-content -->
+    <hr/>
+    <section class="comments" id="comments">
+        <h2>Comments</h2>
+
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'znotdeadgithubio'; // required: replace example with your forum shortname
+
+                    var disqus_identifier = 'db_overview_nosql';
+                var disqus_url = '/db_overview_nosql.html';
+
+            var disqus_config = function () {
+                this.language = "en";
+            };
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function () {
+                var dsq = document.createElement('script');
+                dsq.type = 'text/javascript';
+                dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by
+            Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+    </section>
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+
+<section class="well well-sm">
+    <ul class="list-group list-group-flush">
+
+
+
+
+<li class="list-group-item"><a href="/"><h4><i class="fa fa-tags fa-lg"></i><span class="icon-label">Tags</span></h4></a>
+    <ul class="list-group " id="tags">
+
+        <li class="list-group-item tag-1">
+            <a href="/tag/linux.html">
+                Linux
+            </a>
+        </li>
+        <li class="list-group-item tag-1">
+            <a href="/tag/django.html">
+                Django
+            </a>
+        </li>
+        <li class="list-group-item tag-2">
+            <a href="/tag/python.html">
+                Python
+            </a>
+        </li>
+        <li class="list-group-item tag-2">
+            <a href="/tag/mysql.html">
+                MySQL
+            </a>
+        </li>
+        <li class="list-group-item tag-4">
+            <a href="/tag/nosql.html">
+                NoSQL
+            </a>
+        </li>
+        <li class="list-group-item tag-4">
+            <a href="/tag/redis.html">
+                Redis
+            </a>
+        </li>
+        <li class="list-group-item tag-4">
+            <a href="/tag/svn.html">
+                SVN
+            </a>
+        </li>
+        <li class="list-group-item tag-4">
+            <a href="/tag/rabbitmq.html">
+                RabbitMQ
+            </a>
+        </li>
+        <li class="list-group-item tag-4">
+            <a href="/tag/apache.html">
+                Apache
+            </a>
+        </li>
+    </ul>
+</li>
+    </ul>
+</section>
+            </aside>
+        </div>
+    </div>
+</div>
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2014 znotdead
+            &middot; Powered by <a href="https://github.com/DandyDev/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>    <!-- Disqus -->
+    <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = 'znotdeadgithubio'; // required: replace example with your forum shortname
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script');
+            s.async = true;
+            s.type = 'text/javascript';
+            s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        }());
+    </script>
+    <!-- End Disqus Code -->
+    <!-- Google Analytics -->
+    <script type="text/javascript">
+
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-57013075-1']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script');
+            ga.type = 'text/javascript';
+            ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+    <!-- End Google Analytics Code -->
+</body>
+</html>
