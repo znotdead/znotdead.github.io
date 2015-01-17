@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes</title><link>/</link><description></description><atom:link href="/feeds/znotdead.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 15 Jan 2015 00:00:00 +0100</lastBuildDate><item><title>Чизкейк</title><link>/chizkeik-ru.html</link><description>&lt;h3&gt;Чизкейк&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes</title><link>/</link><description></description><atom:link href="/feeds/znotdead.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 17 Jan 2015 00:00:00 +0100</lastBuildDate><item><title>Чизкейк</title><link>/chizkeik-ru.html</link><description>&lt;h3&gt;Чизкейк&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Ингридиенты:&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Сметана (120 г)&lt;/li&gt;
@@ -23,9 +23,16 @@
 7. Охладить.&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">znotdead</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0100</pubDate><guid>tag:,2015-01-15:chizkeik-ru.html</guid><category>торт</category></item><item><title>Peugeot 307 1997</title><link>/peugeot_307_1997-ru.html</link><description>&lt;h3&gt;Peugeot 307 1997&lt;/h3&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">znotdead</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0100</pubDate><guid>tag:,2015-01-10:peugeot_307_1997-ru.html</guid><category>car</category></item><item><title>Volvo S60 2003</title><link>/volvo_s60_2003-ru.html</link><description>&lt;h3&gt;Volvo S60 2003&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Statistics:&lt;/strong&gt;&lt;br /&gt;
 Bought:&lt;br /&gt;
-Sold:&lt;/p&gt;
+Sold:&lt;br /&gt;
+Odomentr before&lt;br /&gt;
+Odomentr after&lt;br /&gt;
+Passed&lt;br /&gt;
+Fuel&lt;br /&gt;
+Average consumption&lt;br /&gt;
+Low fuel consumption record&lt;br /&gt;
+High fuel consumption record&lt;/p&gt;
 &lt;p&gt;&lt;img alt="exterior" src="static/img/cars/volvo_s60_2003/exterior.jpg" /&gt;&lt;br /&gt;
-&lt;img alt="interior" src="static/img/cars/volvo_s60_2003/interior.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">znotdead</dc:creator><pubDate>Thu, 15 Jan 2015 00:00:00 +0100</pubDate><guid>tag:,2015-01-10:volvo_s60_2003-ru.html</guid><category>car</category></item><item><title>DEVELOPMENT: useful links</title><link>/development_useful_links-ru.html</link><description>&lt;h3&gt;DEVELOPMENT: useful links&lt;/h3&gt;
+&lt;img alt="interior" src="static/img/cars/volvo_s60_2003/interior.jpg" /&gt;&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">znotdead</dc:creator><pubDate>Sat, 17 Jan 2015 00:00:00 +0100</pubDate><guid>tag:,2015-01-10:volvo_s60_2003-ru.html</guid><category>car</category></item><item><title>DEVELOPMENT: useful links</title><link>/development_useful_links-ru.html</link><description>&lt;h3&gt;DEVELOPMENT: useful links&lt;/h3&gt;
 &lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
