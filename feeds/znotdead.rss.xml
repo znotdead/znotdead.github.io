@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes</title><link>http://znotdead.github.io/</link><description></description><atom:link href="http://znotdead.github.io/feeds/znotdead.rss.xml" rel="self"></atom:link><lastBuildDate>Wed, 28 Dec 2016 18:28:00 +0100</lastBuildDate><item><title>HK: Tai Tam Waterworks Heritage Trail</title><link>http://znotdead.github.io/hk_tai_tam_waterworks_heritage_trail-ru.html</link><description>&lt;h3&gt;HK: Tai Tam Waterworks Heritage Trail&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Notes</title><link>http://znotdead.github.io/</link><description></description><atom:link href="http://znotdead.github.io/feeds/znotdead.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 11 May 2017 00:00:00 +0200</lastBuildDate><item><title>PYTHON: Upgrade all pip from requirements</title><link>http://znotdead.github.io/upgrade_all_pip_from_requirements-ru.html</link><description>&lt;h3&gt;PYTHON: Upgrade all pip from requirements&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# pip freeze |sed -ne &amp;#39;s/==.*//p&amp;#39; |xargs pip install -U&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">znotdead</dc:creator><pubDate>Thu, 11 May 2017 00:00:00 +0200</pubDate><guid>tag:znotdead.github.io,2017-05-11:upgrade_all_pip_from_requirements-ru.html</guid><category>Python</category><category>pip</category></item><item><title>HK: Tai Tam Waterworks Heritage Trail</title><link>http://znotdead.github.io/hk_tai_tam_waterworks_heritage_trail-ru.html</link><description>&lt;h3&gt;HK: Tai Tam Waterworks Heritage Trail&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Route:&lt;/strong&gt;&lt;br /&gt;
 &lt;strong&gt;Length:&lt;/strong&gt; 5km&lt;br /&gt;
 &lt;strong&gt;Level:&lt;/strong&gt; Easy&lt;br /&gt;
@@ -5236,7 +5238,7 @@ No shops. Lots of areas for having a rest.&lt;/p&gt;
 &lt;td&gt;Sai Kung&lt;/td&gt;
 &lt;td&gt;0.58&lt;/td&gt;
 &lt;td&gt;treewalk&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://connect.garmin.com/modern/activity/1594472225"&gt;26/02/2017&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href="http://www.treewalks.gov.hk/treewalk/index_walk.php?wid=15&amp;amp;lang=en"&gt;treewalks.gov.hk&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Notes</title><link href="http://znotdead.github.io/" rel="alternate"></link><link href="http://znotdead.github.io/feeds/znotdead.atom.xml" rel="self"></link><id>http://znotdead.github.io/</id><updated>2016-12-28T18:28:00+01:00</updated><entry><title>HK: Tai Tam Waterworks Heritage Trail</title><link href="http://znotdead.github.io/hk_tai_tam_waterworks_heritage_trail-ru.html" rel="alternate"></link><updated>2016-12-28T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:znotdead.github.io,2016-12-10:hk_tai_tam_waterworks_heritage_trail-ru.html</id><summary type="html">&lt;h3&gt;HK: Tai Tam Waterworks Heritage Trail&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Notes</title><link href="http://znotdead.github.io/" rel="alternate"></link><link href="http://znotdead.github.io/feeds/znotdead.atom.xml" rel="self"></link><id>http://znotdead.github.io/</id><updated>2017-05-11T00:00:00+02:00</updated><entry><title>PYTHON: Upgrade all pip from requirements</title><link href="http://znotdead.github.io/upgrade_all_pip_from_requirements-ru.html" rel="alternate"></link><updated>2017-05-11T00:00:00+02:00</updated><author><name>znotdead</name></author><id>tag:znotdead.github.io,2017-05-11:upgrade_all_pip_from_requirements-ru.html</id><summary type="html">&lt;h3&gt;PYTHON: Upgrade all pip from requirements&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;# pip freeze |sed -ne &amp;#39;s/==.*//p&amp;#39; |xargs pip install -U&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Python"></category><category term="pip"></category></entry><entry><title>HK: Tai Tam Waterworks Heritage Trail</title><link href="http://znotdead.github.io/hk_tai_tam_waterworks_heritage_trail-ru.html" rel="alternate"></link><updated>2016-12-28T00:00:00+01:00</updated><author><name>znotdead</name></author><id>tag:znotdead.github.io,2016-12-10:hk_tai_tam_waterworks_heritage_trail-ru.html</id><summary type="html">&lt;h3&gt;HK: Tai Tam Waterworks Heritage Trail&lt;/h3&gt;
 &lt;p&gt;&lt;strong&gt;Route:&lt;/strong&gt;&lt;br /&gt;
 &lt;strong&gt;Length:&lt;/strong&gt; 5km&lt;br /&gt;
 &lt;strong&gt;Level:&lt;/strong&gt; Easy&lt;br /&gt;
@@ -5236,7 +5238,7 @@ No shops. Lots of areas for having a rest.&lt;/p&gt;
 &lt;td&gt;Sai Kung&lt;/td&gt;
 &lt;td&gt;0.58&lt;/td&gt;
 &lt;td&gt;treewalk&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;a href="https://connect.garmin.com/modern/activity/1594472225"&gt;26/02/2017&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;a href="http://www.treewalks.gov.hk/treewalk/index_walk.php?wid=15&amp;amp;lang=en"&gt;treewalks.gov.hk&lt;/a&gt;&lt;/td&gt;
 &lt;td&gt;&lt;/td&gt;
 &lt;/tr&gt;
