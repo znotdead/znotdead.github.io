@@ -1,0 +1,103 @@
+{
+  "configVersion": 1,
+  "timestamp": 1793660693658,
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/favicon.jpeg",
+        "/index.html",
+        "/main-ZTR6O5AJ.js",
+        "/manifest.webmanifest",
+        "/styles-CIEVWNMI.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/ico/books.png",
+        "/ico/car.png",
+        "/ico/health.png",
+        "/ico/knitting.png",
+        "/ico/logo.png",
+        "/ico/medicine.png",
+        "/ico/misc.png",
+        "/ico/modeling.png",
+        "/ico/programming.png",
+        "/ico/recipes.png",
+        "/ico/songs.png",
+        "/ico/vim.png",
+        "/ico/znotdead.png",
+        "/icons/icon-128x128.png",
+        "/icons/icon-144x144.png",
+        "/icons/icon-152x152.png",
+        "/icons/icon-192x192.png",
+        "/icons/icon-384x384.png",
+        "/icons/icon-512x512.png",
+        "/icons/icon-72x72.png",
+        "/icons/icon-96x96.png"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/favicon.jpeg": "ee2160a5c7efda685a40bb5c16892b05bafe49d3",
+    "/ico/books.png": "efe36a9c7a90157d133265b2898f0b83a0f64f53",
+    "/ico/car.png": "419d4d1806e7f4d20bcb7eb4c9350af5e8dd5d7d",
+    "/ico/health.png": "a6e15cbf8a08bd96280f160c3a24efcb12386931",
+    "/ico/knitting.png": "36efe6ac3b31c0eb371e2f580f234d823f9a6aed",
+    "/ico/logo.png": "dac17292de20763026372042813ecdb7772eabcf",
+    "/ico/medicine.png": "a6e15cbf8a08bd96280f160c3a24efcb12386931",
+    "/ico/misc.png": "783cd6552ea5c4d0436810c7e243322986a3eeb7",
+    "/ico/modeling.png": "ddf0f0c75c2fa3000f4360524f816ea43359023e",
+    "/ico/programming.png": "220ac04f975793a1bb505cb9273de602f8cf7348",
+    "/ico/recipes.png": "f32c4f6d162b5ff524116c25c7f70e8b820837f9",
+    "/ico/songs.png": "4db67206abf900c4c8e134c71c5a6d73c85cb591",
+    "/ico/vim.png": "9bb666073b356c4cc772a71b541ce6b49414eb12",
+    "/ico/znotdead.png": "9f9108907785962d241cae4ea0281fc6b85dec4a",
+    "/icons/icon-128x128.png": "eeb067dee4486596646ec1eee91bc8418749b7c7",
+    "/icons/icon-144x144.png": "e11aa845c2d7ec24c1a68a6ef0dd16099a8623d5",
+    "/icons/icon-152x152.png": "2c93abb06970d8ce790996a22d7a2f077f73820a",
+    "/icons/icon-192x192.png": "f9ab736e1071c226f5b148f853b260b3bb507992",
+    "/icons/icon-384x384.png": "6adcfa7a678b050b465af23fd0b6ad4a83820b9b",
+    "/icons/icon-512x512.png": "a5a7d9b39d085caedd89f87cd6ce522a38e8f2b8",
+    "/icons/icon-72x72.png": "fa840336216777738854ecf7322c1c45fd22fa41",
+    "/icons/icon-96x96.png": "787b479128b182adc456dc8ac595b5c39e213090",
+    "/index.html": "3c10ee9066a71b89b1bc0def2929a195288b89b8",
+    "/main-ZTR6O5AJ.js": "3c98994edf64310fb4c0213b818548a51aff47cf",
+    "/manifest.webmanifest": "84d753c61851fcdf75c314bb912453e5b3cdd421",
+    "/styles-CIEVWNMI.css": "2e992c862353f27a6b6761de5cf44a7f7f467978"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
